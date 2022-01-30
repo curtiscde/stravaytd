@@ -1,4 +1,4 @@
 [build]
-  functions = "functions"
+  functions = "app/functions"
   publish = "out"
-  command = "npm run build"
+  command = "cd app && npm run build"
