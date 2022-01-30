@@ -1,6 +1,6 @@
 import { Handler } from '@netlify/functions';
 
-const getWebhook = (event) => {
+const getWebhook = (event: any) => {
   // Parses the query params
   const mode = event.queryStringParameters['hub.mode'];
   const token = event.queryStringParameters['hub.verify_token'];
@@ -23,7 +23,7 @@ const getWebhook = (event) => {
   }
 }
 
-const postWebHook = (event) => {
+const postWebHook = (event: any) => {
   const body = JSON.parse(event.body);
   const {
     aspect_type: aspectType,
