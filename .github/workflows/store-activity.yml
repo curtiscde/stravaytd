@@ -12,7 +12,11 @@ on:
       movingtime:
         description: 'Moving Time'
         type: number
-        required: true 
+        required: true
+
+defaults:
+  run:
+    working-directory: gh-action-scripts
 
 jobs:
   build:
@@ -28,7 +32,6 @@ jobs:
         node-version: '16.x'
     - name: Install node dependencies
       run: npm install
-      working-directory: ./gh-action-scripts
     - name: Store Activity
       run: npm run store-activity \
          --activityid=${{ github.event.inputs.activityid }}
