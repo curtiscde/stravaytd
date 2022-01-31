@@ -1,4 +1,0 @@
-[build]
-  functions = "app/functions"
-  publish = "out"
-  command = "cd app && npm run build"
