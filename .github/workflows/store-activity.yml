@@ -14,13 +14,11 @@ on:
         type: number
         required: true
 
-# defaults:
-#   run:
-#     working-directory: gh-action-scripts
-
 jobs:
-  checkout:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
@@ -28,17 +26,11 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '16.x'
-  build:
-    defaults:
-    run:
-      working-directory: gh-action-scripts
-
-    runs-on: ubuntu-latest
-
-
     - name: Install node dependencies
       run: npm install
+      working-directory: gh-action-scripts
     - name: Store Activity
+      working-directory: gh-action-scripts
       run: npm run store-activity
          --activityid=${{ github.event.inputs.activityid }}
          --distance=${{ github.event.inputs.distance }}
