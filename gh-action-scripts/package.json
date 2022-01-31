@@ -1,0 +1,10 @@
+{
+  "name": "gh-action-scripts",
+  "version": "1.0.0",
+  "scripts": {
+    "store-activity": "node ./storeActivity.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
