@@ -16,5 +16,5 @@ export async function getAccessToken() {
     })
   })
     .then((res) => res.json())
-    .then((res) => res.access_token)
+    .then((res: any) => res.access_token)
 }
