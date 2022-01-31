@@ -22,17 +22,16 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
-
     - name: Use Node
       uses: actions/setup-node@v2
       with:
         node-version: '16.x'
-
     - name: Install node dependencies
-      run: cd gh-action-scripts && npm install
-      
+      run: npm install
+      working-directory: gh-action-scripts
     - name: Store Activity
-      run: cd gh-action-scripts && npm run store-activity
+      working-directory: gh-action-scripts
+      run: npm run store-activity
          --activityid=${{ github.event.inputs.activityid }}
          --distance=${{ github.event.inputs.distance }}
          --movingtime=${{ github.event.inputs.movingtime }}
