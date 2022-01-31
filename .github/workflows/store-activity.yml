@@ -33,9 +33,9 @@ jobs:
     - name: Install node dependencies
       run: npm install
     - name: Store Activity
-      run: npm run store-activity \
-         --activityid=${{ github.event.inputs.activityid }} \
-         --distance=${{ github.event.inputs.distance }} \
+      run: npm run store-activity
+         --activityid=${{ github.event.inputs.activityid }}
+         --distance=${{ github.event.inputs.distance }}
          --movingtime=${{ github.event.inputs.movingtime }}
     - name: Commit and push
       run: |-
