@@ -13,7 +13,7 @@ const storeActivity = async () => {
   console.log('distance', distance)
   console.log('movingTime', movingTime)
 
-  await fs.writeFile(`../pending-activities/activity${activityId}.json`, JSON.stringify({
+  await fs.writeFile(`./activity${activityId}.json`, JSON.stringify({
     activityId, distance, movingTime
   }));
 }
