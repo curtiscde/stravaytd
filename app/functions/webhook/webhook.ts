@@ -1,4 +1,8 @@
 import { Handler } from '@netlify/functions';
+import { getAccessToken } from './getAccessToken';
+import { getActivity } from './getActivity';
+
+require('dotenv').config();
 
 const getWebhook = (event: any) => {
   // Parses the query params
@@ -23,21 +27,19 @@ const getWebhook = (event: any) => {
   }
 }
 
-const postWebHook = (event: any) => {
-  const body = JSON.parse(event.body);
+const postWebHook = async (event: any) => {
   const {
     aspect_type: aspectType,
     object_id: objectId,
     object_type: objectType,
-  } = body;
+  } = JSON.parse(event.body);
 
   console.log('aspectType', aspectType)
   console.log('objectId', objectId)
   console.log('objectType', objectType)
 
-  return {
-    statusCode: 200
-  }
+  const accessToken = await getAccessToken();
+  const activity = await getActivity({ accessToken, activityId: objectId })
 }
 
 export const handler: Handler = async (event) => {
@@ -47,7 +49,8 @@ export const handler: Handler = async (event) => {
   }
 
   if (event.httpMethod === 'POST') {
-    return postWebHook(event);
+    postWebHook(event);
+    return { statusCode: 200 }
   }
 
   return { statusCode: 404 }
