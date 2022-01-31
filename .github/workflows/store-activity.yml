@@ -14,15 +14,13 @@ on:
         type: number
         required: true
 
-defaults:
-  run:
-    working-directory: gh-action-scripts
+# defaults:
+#   run:
+#     working-directory: gh-action-scripts
 
 jobs:
-  build:
-
+  checkout:
     runs-on: ubuntu-latest
-
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
@@ -30,6 +28,14 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '16.x'
+  build:
+    defaults:
+    run:
+      working-directory: gh-action-scripts
+
+    runs-on: ubuntu-latest
+
+
     - name: Install node dependencies
       run: npm install
     - name: Store Activity
