@@ -1,16 +1,24 @@
 on:
   workflow_dispatch:
     inputs:
-      activityid:
-        description: 'Activity ID'
+      athleteid:
+        description: 'Athlete ID'
         required: true
         type: number
+      count:
+        description: 'Count'
+        type: number
+        required: true
       distance:
         description: 'Distance'
         required: true 
         type: number
       movingtime:
         description: 'Moving Time'
+        type: number
+        required: true
+      elevationgain:
+        description: 'Elevation Gain'
         type: number
         required: true
 
@@ -29,17 +37,19 @@ jobs:
     - name: Install node dependencies
       run: npm install
       working-directory: gh-action-scripts
-    - name: Store Activity
+    - name: Update Current Athlete YTD
       working-directory: gh-action-scripts
       run: npm run store-activity
-         --activityid=${{ github.event.inputs.activityid }}
+         --athleteid=${{ github.event.inputs.athleteid }}
+         --count=${{ github.event.inputs.count }}
          --distance=${{ github.event.inputs.distance }}
          --movingtime=${{ github.event.inputs.movingtime }}
+         --elevationgain=${{ github.event.inputs.elevationgain }}
     - name: Commit and push
       run: |-
         git diff
         git config --global user.email "actions@users.noreply.github.com"
         git config --global user.name "gh action bot"
         git add -A
-        git commit -m "🏃 Add activity ${{ github.event.inputs.activityid }}"
+        git commit -m "🏃 Update athlete ytd ${{ github.event.inputs.athleteid }}"
         git push
