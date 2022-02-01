@@ -1,6 +1,8 @@
 import { Handler } from '@netlify/functions';
+import { db } from '../../firebase/admin';
+import { decrypt } from './decrypt';
 import { getAccessToken } from './getAccessToken';
-import { getActivity } from './getActivity';
+import { getAthleteYtd } from './getAthleteYtd';
 
 require('dotenv').config();
 
@@ -27,19 +29,32 @@ const getWebhook = (event: any) => {
   }
 }
 
+async function getToken(id: number) {
+  return await db
+    .collection('users')
+    .where('id', '==', id)
+    .limit(1)
+    .get()
+    .then(data => {
+      return data.docs[0].get('token')
+    })
+}
+
 const postWebHook = async (event: any) => {
   const {
     aspect_type: aspectType,
-    object_id: objectId,
     object_type: objectType,
+    owner_id: ownerId,
   } = JSON.parse(event.body);
 
   console.log('aspectType', aspectType)
-  console.log('objectId', objectId)
   console.log('objectType', objectType)
+  console.log('ownerId', ownerId)
 
-  const accessToken = await getAccessToken();
-  const activity = await getActivity({ accessToken, activityId: objectId })
+  const token = await getToken(ownerId);
+  const refreshToken = decrypt(token);
+  const accessToken = await getAccessToken(refreshToken);
+  const athleteYtd = await getAthleteYtd({ accessToken, athleteId: ownerId })
 }
 
 export const handler: Handler = async (event) => {

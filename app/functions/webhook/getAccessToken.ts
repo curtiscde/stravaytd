@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 
 require('dotenv').config();
 
-export async function getAccessToken() {
+export async function getAccessToken(refreshToken: string) {
   return await fetch('https://www.strava.com/oauth/token', {
     method: 'POST',
     headers: {
@@ -11,7 +11,7 @@ export async function getAccessToken() {
     body: JSON.stringify({
       client_id: process.env.STRAVA_CLIENTID,
       client_secret: process.env.STRAVA_CLIENTSECRET,
-      refresh_token: process.env.STRAVA_REFRESHTOKEN,
+      refresh_token: refreshToken,
       grant_type: 'refresh_token'
     })
   })
