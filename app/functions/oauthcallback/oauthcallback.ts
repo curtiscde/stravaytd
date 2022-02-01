@@ -39,5 +39,10 @@ export const handler: Handler = async (event: any) => {
     return { statusCode: 500 }
   }
 
-  return { statusCode: 200 }
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      verified: true
+    })
+  }
 }
