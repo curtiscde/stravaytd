@@ -39,7 +39,7 @@ jobs:
       working-directory: gh-action-scripts
     - name: Update Current Athlete YTD
       working-directory: gh-action-scripts
-      run: npm run store-activity
+      run: npm run update-current-ytd
          --athleteid=${{ github.event.inputs.athleteid }}
          --count=${{ github.event.inputs.count }}
          --distance=${{ github.event.inputs.distance }}

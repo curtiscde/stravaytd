@@ -8,9 +8,6 @@ const updateCurrentYtd = async () => {
   const movingTime = Number(process.env.npm_config_movingtime);
   const elevationGain = Number(process.env.npm_config_elevationgain)
 
-  console.log('distance', distance)
-  console.log('movingTime', movingTime)
-
   const dir = '../current-ytd';
 
   if (!fs.existsSync(dir)) fs.mkdirSync(dir);
