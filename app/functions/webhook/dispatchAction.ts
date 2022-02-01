@@ -17,7 +17,7 @@ export async function dispatchAction(athleteYtd: IAthleteYtd) {
   const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
 
   await octokit.request(`POST /repos/${process.env.GITHUB_REPO}/actions/workflows/update-current-ytd.yml/dispatches`, {
-    ref: 'dispatchaction',
+    ref: process.env.GITHUB_REF,
     inputs: mapAthleteYtdToString(athleteYtd)
   })
   console.log('action dispatched')
