@@ -1,16 +1,24 @@
 import fetch from "node-fetch";
+import { IAthleteYtd } from "./IAthleteYtd";
 
-interface IGetAthleteYtd {
+interface IGetAthleteYtdProps {
   accessToken: string;
-  athleteId: string;
+  athleteId: number;
 }
 
-export async function getAthleteYtd({ accessToken, athleteId }: IGetAthleteYtd) {
+export async function getAthleteYtd({ accessToken, athleteId }: IGetAthleteYtdProps): Promise<IAthleteYtd> {
   return await fetch(`https://www.strava.com/api/v3/athletes/${athleteId}/stats`, {
-    headers: {
-      'authorization': `Bearer ${accessToken}`
-    }
+    headers: { 'authorization': `Bearer ${accessToken}` }
   })
     .then((res) => res.json())
-    .then((res: any) => res.ytd_run_totals)
+    .then((res: any) => {
+      const {
+        count,
+        distance,
+        moving_time: movingTime,
+        elevation_gain: elevationGain
+      } = res.ytd_run_totals;
+
+      return { athleteId, count, distance, movingTime, elevationGain }
+    })
 }

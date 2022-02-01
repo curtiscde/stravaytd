@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@netlify/functions": "^0.11.0",
+    "@octokit/core": "^3.5.1",
     "dotenv": "^15.0.0",
     "firebase-admin": "^10.0.2",
     "next": "12.0.9",
