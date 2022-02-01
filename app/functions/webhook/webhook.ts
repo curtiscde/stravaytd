@@ -42,16 +42,9 @@ async function getToken(id: number) {
     })
 }
 
-const postWebHook = async (event: any) => {
-  const {
-    aspect_type: aspectType,
-    object_type: objectType,
-    owner_id: ownerId,
-  } = JSON.parse(event.body);
-
-  console.log('aspectType', aspectType)
-  console.log('objectType', objectType)
-  console.log('ownerId', ownerId)
+const postWebhook = async (event: any) => {
+  console.log('postWebhook call')
+  const { owner_id: ownerId } = JSON.parse(event.body);
 
   try {
     const token = await getToken(ownerId);
@@ -63,13 +56,13 @@ const postWebHook = async (event: any) => {
 }
 
 export const handler: Handler = async (event) => {
-  console.log('webhook')
+  console.log('webhook call')
   if (event.httpMethod === 'GET') {
     return getWebhook(event);
   }
 
   if (event.httpMethod === 'POST') {
-    postWebHook(event);
+    postWebhook(event);
     return { statusCode: 200 }
   }
 
