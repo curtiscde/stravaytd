@@ -10,6 +10,7 @@
   "dependencies": {
     "@netlify/functions": "^0.11.0",
     "dotenv": "^15.0.0",
+    "firebase-admin": "^10.0.2",
     "next": "12.0.9",
     "node-fetch": "^3.2.0",
     "react": "17.0.2",
