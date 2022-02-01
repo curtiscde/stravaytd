@@ -2,7 +2,7 @@
   "name": "gh-action-scripts",
   "version": "1.0.0",
   "scripts": {
-    "store-activity": "node ./storeActivity.js"
+    "update-current-ytd": "node ./updateCurrentYtd.js"
   },
   "author": "",
   "license": "ISC",
