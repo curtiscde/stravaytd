@@ -1,4 +1,4 @@
-name: GH Scripts CI
+name: Scripts CI
 
 on:
   push:
@@ -7,8 +7,7 @@ on:
     branches: [ main ]
 
 defaults:
-  run:
-    working-directory: ./gh-action-scripts
+  working-directory: ./gh-action-scripts
 
 jobs:
   build:
