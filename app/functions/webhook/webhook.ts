@@ -1,27 +1,21 @@
 import { Handler } from '@netlify/functions';
-import { db } from '../../firebase/admin';
 import { decrypt } from './decrypt';
 import { dispatchAction } from './dispatchAction';
 import { getAccessToken } from './getAccessToken';
 import { getAthleteYtd } from './getAthleteYtd';
-import { IAthleteYtd } from './IAthleteYtd';
+import { getToken } from './getToken';
 
 require('dotenv').config();
 
 const getWebhook = (event: any) => {
-  // Parses the query params
   const mode = event.queryStringParameters['hub.mode'];
   const token = event.queryStringParameters['hub.verify_token'];
   const challenge = event.queryStringParameters['hub.challenge'];
-  // Checks if a token and mode is in the query string of the request
   if (mode && token) {
-    // Verifies that the mode and token sent are valid
     if (mode === 'subscribe' && token === process.env.STRAVA_VERIFY_TOKEN) {
-      // Responds with the challenge token from the request
       console.log('WEBHOOK_VERIFIED');
       return { statusCode: 200, body: JSON.stringify({ "hub.challenge": challenge }) }
     } else {
-      // Responds with '403 Forbidden' if verify tokens do not match
       return { statusCode: 403 }
     }
   }
@@ -29,17 +23,6 @@ const getWebhook = (event: any) => {
   return {
     statusCode: 500
   }
-}
-
-async function getToken(id: number) {
-  return await db
-    .collection('users')
-    .where('id', '==', id)
-    .limit(1)
-    .get()
-    .then(data => {
-      return data.docs[0].get('token')
-    })
 }
 
 const postWebhook = async (event: any) => {
@@ -62,7 +45,7 @@ export const handler: Handler = async (event) => {
   }
 
   if (event.httpMethod === 'POST') {
-    postWebhook(event);
+    await postWebhook(event);
     return { statusCode: 200 }
   }
 
