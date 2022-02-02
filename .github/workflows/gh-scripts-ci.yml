@@ -13,11 +13,11 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-        working-directory: ./app
+        working-directory: ./gh-action-scripts
 
     defaults:
       run:
-        working-directory: ./app
+        working-directory: ./gh-action-scripts
 
     steps:
     - uses: actions/checkout@v2
