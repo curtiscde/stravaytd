@@ -15,7 +15,11 @@ async function deleteExistingUserDocs(id: number) {
 async function addUser(authData: IOAuthTokenResponse) {
   return await db
     .collection('users')
-    .add({ id: authData.athlete.id, token: encrypt(authData.refresh_token) })
+    .add({
+      id: authData.athlete.id,
+      token: encrypt(authData.refresh_token),
+      dateAdded: new Date(),
+    })
     .then(() => console.log('user added'))
     .catch((e) => { throw new Error(e) });
 }
