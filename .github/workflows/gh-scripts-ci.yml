@@ -13,7 +13,6 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-        working-directory: ./gh-action-scripts
 
     defaults:
       run:
