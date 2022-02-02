@@ -1,10 +1,14 @@
-name: App CI
+name: GH Scripts CI
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
+defaults:
+  run:
+    working-directory: ./gh-action-scripts
 
 jobs:
   build:
