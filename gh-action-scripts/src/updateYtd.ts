@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import * as fsp from 'fs/promises';
 import * as path from 'path';
 import { generateNewYtd } from './util/generateNewYtd';
 
@@ -33,6 +34,8 @@ const updateYtd = async () => {
   console.log('new athletesYtd', athletesYtd)
 
   const newYtd = generateNewYtd(ytd, athletesYtd, now)
+
+  await fsp.writeFile(ytdFileLocation, JSON.stringify(newYtd));
 }
 
 updateYtd();
