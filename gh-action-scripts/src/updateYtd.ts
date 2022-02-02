@@ -1,7 +1,6 @@
-import fs from 'fs';
-import fsp from 'fs/promises';
-import path from 'path';
-import { generateNewYtd } from './util/generateNewYtd.js';
+import * as fs from 'fs';
+import * as path from 'path';
+import { generateNewYtd } from './util/generateNewYtd';
 
 const ytdFileLocation = '../app/data/ytd.json';
 
@@ -36,4 +35,4 @@ const updateYtd = async () => {
   const newYtd = generateNewYtd(ytd, athletesYtd, now)
 }
 
-await updateYtd();
+updateYtd();

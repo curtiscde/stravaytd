@@ -1,5 +1,5 @@
-import fs from 'fs';
-import fsp from 'fs/promises';
+import * as fs from 'fs';
+import * as fsp from 'fs/promises';
 
 const updateCurrentYtd = async () => {
   const athleteId = Number(process.env.npm_config_athleteid);
@@ -17,4 +17,4 @@ const updateCurrentYtd = async () => {
   }));
 }
 
-await updateCurrentYtd();
+updateCurrentYtd();

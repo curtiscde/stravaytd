@@ -35,7 +35,10 @@ jobs:
       with:
         node-version: '16.x'
     - name: Install node dependencies
-      run: npm install
+      run: npm ci
+      working-directory: gh-action-scripts
+    - name: Compile Typescript
+      run: npm run build
       working-directory: gh-action-scripts
     - name: Update Current Athlete YTD
       working-directory: gh-action-scripts
