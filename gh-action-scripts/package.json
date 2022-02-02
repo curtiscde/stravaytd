@@ -2,10 +2,18 @@
   "name": "gh-action-scripts",
   "version": "1.0.0",
   "scripts": {
-    "update-ytd": "node ./updateYtd.js",
-    "update-current-ytd": "node ./updateCurrentYtd.js"
+    "update-ytd": "node ./src/updateYtd.js",
+    "update-current-ytd-js": "node ./src/updateCurrentYtd.js",
+    "update-current-ytd": "node ./build/updateCurrentYtd.js",
+    "tt": "node ./build/tt.js",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "dependencies": {
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.14"
+  }
 }
