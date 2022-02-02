@@ -12,12 +12,9 @@ function generateAthletes(ytd: any, athletesYtd: any[], now: number) {
 
   athletes.forEach(athlete => {
     const newAthleteYtd = athletesYtd.find(a => a.athleteId === athlete.athleteId);
+    const { count, distance, movingTime, elevationGain } = newAthleteYtd;
     athlete.ytd.push({
-      date: now,
-      count: newAthleteYtd.count,
-      distance: newAthleteYtd.distance,
-      movingTime: newAthleteYtd.movingTime,
-      elevationGain: newAthleteYtd.elevationGain,
+      date: now, count, distance, movingTime, elevationGain,
     })
   })
 
