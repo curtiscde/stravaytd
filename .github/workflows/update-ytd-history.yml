@@ -14,12 +14,12 @@ jobs:
         node-version: '16.x'
     - name: Install node dependencies
       run: npm ci
-      working-directory: gh-action-scripts
+      working-directory: github-actions
     - name: Compile Typescript
       run: npm run build
-      working-directory: gh-action-scripts
+      working-directory: github-actions
     - name: Update YTD History
-      working-directory: gh-action-scripts
+      working-directory: github-actions
       run: npm run update-ytd-history
     - name: Commit and push
       run: |-

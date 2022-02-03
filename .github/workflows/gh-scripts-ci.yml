@@ -8,7 +8,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./gh-action-scripts
+    working-directory: ./github-actions
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: gh-action-scripts/package-lock.json
+        cache-dependency-path: github-actions/package-lock.json
     - run: npm ci
     - run: npm run build
     - run: npm run test:ci
