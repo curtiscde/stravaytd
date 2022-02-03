@@ -79,14 +79,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏃‍♂️</text></svg>"></link>
       </Head>
 
-      {/* <header className="p-4 dark:bg-coolGray-800 dark:text-coolGray-100">
-        <div className="container flex justify-between h-16 mx-auto">
-          <a rel="noopener noreferrer" href="#" aria-label="Back to homepage" className="flex items-center p-2">
-            🏃‍♂️ Strava Year-To-Date Stats
-          </a>
-        </div>
-      </header> */}
-
       <header className="container flex items-center justify-between w-full max-w-3xl px-6 py-10 mx-auto xl:max-w-5xl">
         <Link href='/'>
           <a rel="noopener noreferrer" className="block h-6 text-2xl font-semibold">Strava Year-To-Date Stats</a>
