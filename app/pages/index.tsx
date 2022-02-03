@@ -3,6 +3,7 @@ import Head from 'next/head'
 import ytdHistory from '../data/ytdHistory.json';
 import Heading from '../components/Heading';
 import YtdChart from '../components/YtdChart';
+import Link from 'next/link'
 
 const convertMtoKm = (metres: number) => Math.round((metres / 1000) * 100) / 100
 
@@ -87,13 +88,15 @@ const Home: NextPage = () => {
       </header> */}
 
       <header className="container flex items-center justify-between w-full max-w-3xl px-6 py-10 mx-auto xl:max-w-5xl">
-        <a rel="noopener noreferrer" href="/" className="block h-6 text-2xl font-semibold">Strava Year-To-Date Stats</a>
+        <Link href='/'>
+          <a rel="noopener noreferrer" className="block h-6 text-2xl font-semibold">Strava Year-To-Date Stats</a>
+        </Link>
         <div className="flex items-center">
           <div className="hidden space-x-2 font-medium sm:block">
-            <a rel="noopener noreferrer" href="#distance" className="p-1">🏃‍♂️ Distance</a>
-            <a rel="noopener noreferrer" href="#runs" className="p-1">💯 Runs</a>
-            <a rel="noopener noreferrer" href="#time" className="p-1">⏱ Time</a>
-            <a rel="noopener noreferrer" href="#elevation" className="p-1">🏔 Elevation</a>
+            <Link href="#distance"><a rel="noopener noreferrer" className="p-1">🏃‍♂️ Distance</a></Link>
+            <Link href="#runs"><a rel="noopener noreferrer" className="p-1">💯 Runs</a></Link>
+            <Link href="#time"><a rel="noopener noreferrer" className="p-1">⏱ Time</a></Link>
+            <Link href="#elevation"><a rel="noopener noreferrer" className="p-1">🏔 Elevation</a></Link>
           </div>
         </div>
       </header>
