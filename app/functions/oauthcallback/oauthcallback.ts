@@ -1,5 +1,6 @@
 import { Handler } from '@netlify/functions';
 import fetch from 'node-fetch';
+import { isAthleteAllowed } from '../../util/isAthleteAllowed';
 import { IOAuthTokenResponse } from './IOAuthTokenResponse';
 import { upsertUser } from './upsertUser';
 
@@ -21,19 +22,14 @@ async function getAuthData(code: string): Promise<IOAuthTokenResponse> {
     .then((res: any) => res.json())
 }
 
-function isAthleteAllowed(athleteId: number): boolean {
-  return process.env.ALLOWED_ATHLETES!
-    .split(',')
-    .map(id => Number(id))
-    .includes(athleteId)
-}
-
 export const handler: Handler = async (event: any) => {
   const code = event.queryStringParameters['code'];
 
   try {
     const authData = await getAuthData(code);
-    if (!isAthleteAllowed) return { statusCode: 401 }
+    if (!isAthleteAllowed(process.env.ALLOWED_ATHLETES!, authData.athlete.id)) {
+      return { statusCode: 401 }
+    }
     await upsertUser(authData)
   } catch (e) {
     return { statusCode: 500 }

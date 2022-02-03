@@ -1,4 +1,4 @@
-name: Scripts CI
+name: App CI
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 defaults:
   run:
-    working-directory: ./github-actions
+    working-directory: ./app
 
 jobs:
   build:
