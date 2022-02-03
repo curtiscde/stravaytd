@@ -31,41 +31,43 @@ const getStyles = (index: number) => {
 }
 
 const Home: NextPage = () => {
+  const ytdH: any = ytdHistory;
+
   const distanceData = {
-    datasets: ytdHistory.athletes.map((athlete, index) => ({
+    datasets: ytdH.athletes.map((athlete: any, index: any) => ({
       label: athlete.athleteId,
       ...getStyles(index),
-      data: athlete.ytd.map(data => ({
+      data: athlete.ytd.map((data: any) => ({
         x: data.date, y: convertMtoKm(data.distance)
       }))
     }))
   }
 
   const runsData = {
-    datasets: ytdHistory.athletes.map((athlete, index) => ({
+    datasets: ytdH.athletes.map((athlete: any, index: any) => ({
       label: athlete.athleteId,
       ...getStyles(index),
-      data: athlete.ytd.map(data => ({
+      data: athlete.ytd.map((data: any) => ({
         x: data.date, y: data.count
       }))
     }))
   }
 
   const movingTimeData = {
-    datasets: ytdHistory.athletes.map((athlete, index) => ({
+    datasets: ytdH.athletes.map((athlete: any, index: any) => ({
       label: athlete.athleteId,
       ...getStyles(index),
-      data: athlete.ytd.map(data => ({
+      data: athlete.ytd.map((data: any) => ({
         x: data.date, y: (data.movingTime / 60)
       }))
     }))
   }
 
   const elevationGainData = {
-    datasets: ytdHistory.athletes.map((athlete, index) => ({
+    datasets: ytdH.athletes.map((athlete: any, index: any) => ({
       label: athlete.athleteId,
       ...getStyles(index),
-      data: athlete.ytd.map(data => ({
+      data: athlete.ytd.map((data: any) => ({
         x: data.date, y: data.elevationGain
       }))
     }))
