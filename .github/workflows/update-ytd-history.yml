@@ -18,6 +18,14 @@ jobs:
     - name: Compile Typescript
       run: npm run build
       working-directory: gh-action-scripts
-    - name: Update Current YTD
+    - name: Update YTD History
       working-directory: gh-action-scripts
-      run: npm run update-ytd
+      run: npm run update-ytd-history
+    - name: Commit and push
+      run: |-
+        git diff
+        git config --global user.email "actions@users.noreply.github.com"
+        git config --global user.name "gh action bot"
+        git add -A
+        git commit -m "🗂 Update ytd history"
+        git push

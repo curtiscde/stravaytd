@@ -1,8 +1,9 @@
 import * as fs from 'fs';
+import * as fsp from 'fs/promises';
 import * as path from 'path';
 import { generateNewYtd } from './util/generateNewYtd';
 
-const ytdFileLocation = '../app/data/ytd.json';
+const ytdFileLocation = '../app/data/ytdHistory.json';
 
 const getYtd = () => {
   const file = fs.readFileSync(ytdFileLocation, 'utf8')
@@ -29,10 +30,9 @@ const updateYtd = async () => {
   const now = (new Date()).getTime();
   const ytd = getYtd();
   const athletesYtd = getAthletesCurrentYtd();
-
-  console.log('new athletesYtd', athletesYtd)
-
   const newYtd = generateNewYtd(ytd, athletesYtd, now)
+
+  await fsp.writeFile(ytdFileLocation, JSON.stringify(newYtd));
 }
 
 updateYtd();
