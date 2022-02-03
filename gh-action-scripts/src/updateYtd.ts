@@ -30,9 +30,6 @@ const updateYtd = async () => {
   const now = (new Date()).getTime();
   const ytd = getYtd();
   const athletesYtd = getAthletesCurrentYtd();
-
-  console.log('new athletesYtd', athletesYtd)
-
   const newYtd = generateNewYtd(ytd, athletesYtd, now)
 
   await fsp.writeFile(ytdFileLocation, JSON.stringify(newYtd));
