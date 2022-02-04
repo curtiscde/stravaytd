@@ -1,5 +1,5 @@
 import { Octokit } from "@octokit/core"
-import { IAthleteYtd } from "./IAthleteYtd";
+import { IAthleteYtd } from "../types/IAthleteYtd";
 
 function mapAthleteYtdToString(athleteYtd: IAthleteYtd) {
   const { athleteId, count, distance, movingTime, elevationGain } = athleteYtd;

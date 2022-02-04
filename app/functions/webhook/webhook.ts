@@ -1,8 +1,8 @@
 import { Handler } from '@netlify/functions';
 import { decrypt } from './decrypt';
-import { dispatchAction } from './dispatchAction';
+import { dispatchAction } from '../util/dispatchAction';
 import { getAccessToken } from './getAccessToken';
-import { getAthleteYtd } from './getAthleteYtd';
+import { getAthleteYtd } from '../util/getAthleteYtd';
 import { getToken } from './getToken';
 
 require('dotenv').config();

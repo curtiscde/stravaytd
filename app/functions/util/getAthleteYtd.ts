@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { IAthleteYtd } from "./IAthleteYtd";
+import { IAthleteYtd } from '../types/IAthleteYtd';
 
 interface IGetAthleteYtdProps {
   accessToken: string;
