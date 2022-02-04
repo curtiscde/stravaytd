@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { filterData } from './filterData';
 import { mapAthleteName } from './mapAthleteName';
 
 const convertMtoKm = (metres: number) => Math.round((metres / 1000) * 100) / 100
@@ -28,10 +29,10 @@ const getStyles = (index: number) => {
 
 export function getStats(allowedAthletes: string) {
   const ytdHistoryFile = fs.readFileSync('../app/data/ytdHistory.json', 'utf-8');
-  const ytdHistory: any = JSON.parse(ytdHistoryFile);
+  const { athletes }: any = JSON.parse(ytdHistoryFile);
 
   const distanceData = {
-    datasets: ytdHistory.athletes.map((athlete: any, index: any) => ({
+    datasets: filterData(athletes, 'distance').map((athlete: any, index: any) => ({
       label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
@@ -41,7 +42,7 @@ export function getStats(allowedAthletes: string) {
   }
 
   const runsData = {
-    datasets: ytdHistory.athletes.map((athlete: any, index: any) => ({
+    datasets: filterData(athletes, 'count').map((athlete: any, index: any) => ({
       label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
@@ -51,7 +52,7 @@ export function getStats(allowedAthletes: string) {
   }
 
   const movingTimeData = {
-    datasets: ytdHistory.athletes.map((athlete: any, index: any) => ({
+    datasets: filterData(athletes, 'movingTime').map((athlete: any, index: any) => ({
       label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
@@ -61,7 +62,7 @@ export function getStats(allowedAthletes: string) {
   }
 
   const elevationGainData = {
-    datasets: ytdHistory.athletes.map((athlete: any, index: any) => ({
+    datasets: filterData(athletes, 'elevationGain').map((athlete: any, index: any) => ({
       label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({

@@ -24,7 +24,7 @@ Chart.register(
 
 export default function YtdChart({ data }: { data: any }) {
   const options: ChartOptions = {
-    animation: false,
+    normalized: true,
     responsive: true,
     scales: {
       x: {
@@ -32,8 +32,12 @@ export default function YtdChart({ data }: { data: any }) {
         time: {
           displayFormats: {
             quarter: 'MMM YYYY'
-          }
-        }
+          },
+        },
+      },
+      y: {
+        type: 'linear',
+        min: 0,
       }
     },
   };
