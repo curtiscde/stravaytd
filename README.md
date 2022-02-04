@@ -1,3 +1,3 @@
 # Strava YTD Stats
 
-[![App CI](https://github.com/curtiscde/strava-ytd-stats-cr/actions/workflows/app-ci.yml/badge.svg)](https://github.com/curtiscde/strava-ytd-stats-cr/actions/workflows/app-ci.yml) [![Scripts CI](https://github.com/curtiscde/strava-ytd-stats-cr/actions/workflows/gh-scripts-ci.yml/badge.svg)](https://github.com/curtiscde/strava-ytd-stats-cr/actions/workflows/gh-scripts-ci.yml)
+[![App CI](https://github.com/curtiscde/strava-ytd-stats-cr/actions/workflows/app-ci.yml/badge.svg)](https://github.com/curtiscde/strava-ytd-stats-cr/actions/workflows/app-ci.yml) [![Scripts CI](https://github.com/curtiscde/strava-ytd-stats-cr/actions/workflows/gh-scripts-ci.yml/badge.svg)](https://github.com/curtiscde/strava-ytd-stats-cr/actions/workflows/gh-scripts-ci.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/e1fb843a-952b-425a-a463-5bcdde5581e0/deploy-status)](https://app.netlify.com/sites/strava-ytd-stats-cr/deploys)
