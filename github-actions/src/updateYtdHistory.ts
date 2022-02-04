@@ -17,10 +17,11 @@ const getYtd = () => {
 };
 
 const getAthletesCurrentYtd = () => {
-  const files = fs.readdirSync(path.join('../current-ytd'));
+  const currentYtdPath = '../data/current-ytd';
+  const files = fs.readdirSync(path.join(currentYtdPath));
   const athletesYtd = [];
   files.forEach(file => {
-    const f = JSON.parse(fs.readFileSync(`../current-ytd/${file}`, 'utf8'))
+    const f = JSON.parse(fs.readFileSync(`${currentYtdPath}/${file}`, 'utf8'))
     athletesYtd.push(f);
   })
   return athletesYtd;
