@@ -80,7 +80,7 @@ const Home: NextPage<HomeProps> = ({ distanceData, runsData, movingTimeData, ele
 export default Home
 
 export async function getStaticProps() {
-  const allowedAthletes = process.env.ALLOWED_ATHLETES!;
+  const allowedAthletes = process.env.ALLOWED_ATHLETES || '';
   const { distanceData, runsData, movingTimeData, elevationGainData } = getStats(allowedAthletes);
   return {
     props: {
