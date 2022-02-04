@@ -3,7 +3,7 @@ import * as fsp from 'fs/promises';
 import * as path from 'path';
 import { generateNewYtd } from './util/generateNewYtd';
 
-const ytdFileLocation = '../app/data/ytdHistory.json';
+const ytdFileLocation = '../data/ytdHistory.json';
 
 const getYtd = () => {
   const file = fs.readFileSync(ytdFileLocation, 'utf8')
