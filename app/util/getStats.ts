@@ -26,13 +26,13 @@ const getStyles = (index: number) => {
   }
 }
 
-export function getStats() {
+export function getStats(allowedAthletes: string) {
   const ytdHistoryFile = fs.readFileSync('../data/ytdHistory.json', 'utf-8');
   const ytdHistory: any = JSON.parse(ytdHistoryFile);
 
   const distanceData = {
     datasets: ytdHistory.athletes.map((athlete: any, index: any) => ({
-      label: mapAthleteName(process.env.ALLOWED_ATHLETES!, athlete.athleteId),
+      label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
         x: data.date, y: convertMtoKm(data.distance)
@@ -42,7 +42,7 @@ export function getStats() {
 
   const runsData = {
     datasets: ytdHistory.athletes.map((athlete: any, index: any) => ({
-      label: mapAthleteName(process.env.ALLOWED_ATHLETES!, athlete.athleteId),
+      label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
         x: data.date, y: data.count
@@ -52,7 +52,7 @@ export function getStats() {
 
   const movingTimeData = {
     datasets: ytdHistory.athletes.map((athlete: any, index: any) => ({
-      label: mapAthleteName(process.env.ALLOWED_ATHLETES!, athlete.athleteId),
+      label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
         x: data.date, y: (data.movingTime / 60)
@@ -62,7 +62,7 @@ export function getStats() {
 
   const elevationGainData = {
     datasets: ytdHistory.athletes.map((athlete: any, index: any) => ({
-      label: mapAthleteName(process.env.ALLOWED_ATHLETES!, athlete.athleteId),
+      label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
         x: data.date, y: data.elevationGain
