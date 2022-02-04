@@ -1,6 +1,9 @@
 import { Handler } from '@netlify/functions';
 import fetch from 'node-fetch';
 import { isAthleteAllowed } from '../../util/isAthleteAllowed';
+import { IAthleteYtd } from '../types/IAthleteYtd';
+import { dispatchAction } from '../util/dispatchAction';
+import { getAthleteYtd } from '../util/getAthleteYtd';
 import { IOAuthTokenResponse } from './IOAuthTokenResponse';
 import { upsertUser } from './upsertUser';
 
@@ -30,7 +33,14 @@ export const handler: Handler = async (event: any) => {
     if (!isAthleteAllowed(process.env.ALLOWED_ATHLETES!, authData.athlete.id)) {
       return { statusCode: 401 }
     }
-    await upsertUser(authData)
+    await upsertUser(authData);
+    console.log('user added');
+    const athleteYtd: IAthleteYtd = await getAthleteYtd({
+      accessToken: authData.access_token,
+      athleteId: authData.athlete.id,
+    });
+    await dispatchAction(athleteYtd);
+    console.log('latest ytd dispatched');
   } catch (e) {
     return { statusCode: 500 }
   }
@@ -38,7 +48,8 @@ export const handler: Handler = async (event: any) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      verified: true
+      verified: true,
+      ytdSet: true,
     })
   }
 }
