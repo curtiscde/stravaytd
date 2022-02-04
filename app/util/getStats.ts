@@ -27,7 +27,7 @@ const getStyles = (index: number) => {
 }
 
 export function getStats(allowedAthletes: string) {
-  const ytdHistoryFile = fs.readFileSync('../data/ytdHistory.json', 'utf-8');
+  const ytdHistoryFile = fs.readFileSync('../app/data/ytdHistory.json', 'utf-8');
   const ytdHistory: any = JSON.parse(ytdHistoryFile);
 
   const distanceData = {
