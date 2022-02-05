@@ -1,7 +1,1 @@
-{
-  "meta": {
-    "lastUpdated": 0,
-    "version": 0
-  },
-  "athletes": []
-}
+{"meta":{"lastUpdated":86400000,"version":1},"athletes":[{"athleteId":4834483,"ytd":[{"date":86400000,"count":7,"distance":31016,"movingTime":10375,"elevationGain":95}]},{"athleteId":55364677,"ytd":[{"date":86400000,"count":7,"distance":33442,"movingTime":10663,"elevationGain":259}]},{"athleteId":62183711,"ytd":[{"date":86400000,"count":4,"distance":20288,"movingTime":7745,"elevationGain":16}]},{"athleteId":72204772,"ytd":[{"date":86400000,"count":8,"distance":39949,"movingTime":12834,"elevationGain":166}]}]}
