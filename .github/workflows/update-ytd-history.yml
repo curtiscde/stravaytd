@@ -1,4 +1,7 @@
+name: Update YTD History
+
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
 
