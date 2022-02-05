@@ -1,3 +1,5 @@
+name: Update Athlete YTD
+
 on:
   workflow_dispatch:
     inputs:
