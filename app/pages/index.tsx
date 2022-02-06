@@ -12,18 +12,19 @@ interface SectionsProps {
     title: string;
     subtitle: string;
     data: any;
+    formatTooltip?: (y: any) => string;
   }>
 }
 
 function Sections({ sections }: SectionsProps) {
-  return (<>{sections.map(({ anchor, title, subtitle, data }) => (
+  return (<>{sections.map(({ anchor, title, subtitle, data, formatTooltip }) => (
     <div key={anchor}>
       <a id={anchor}></a>
       <Heading
         title={title}
         subtitle={subtitle}
       />
-      <YtdChart data={data} />
+      <YtdChart data={data} formatTooltip={formatTooltip} />
     </div>
   ))}</>)
 }
@@ -42,24 +43,32 @@ const Home: NextPage<HomeProps> = ({ distanceData, runsData, movingTimeData, ele
       title: '🏃‍♂️ Total Distance',
       subtitle: 'Total distance since the start of 2022',
       data: distanceData,
+      formatTooltip: (y: any) => `${y} km`
     },
     {
       anchor: 'runs',
       title: '💯 Total Runs',
       subtitle: 'Total runs since the start of 2022',
       data: runsData,
+      formatTooltip: (y: any) => `${y} runs`
     },
     {
       anchor: 'time',
       title: '⏱ Total Moving Time',
       subtitle: 'Total moving time since the start of 2022',
       data: movingTimeData,
+      formatTooltip: (y: any) => {
+        const hours = Math.floor(y / 60);
+        const minutes = y % 60;
+        return `${hours}h ${parseInt(minutes.toString(), 10)}m`
+      }
     },
     {
       anchor: 'elevation',
       title: '🏔 Total Elevation Gain',
       subtitle: 'Total elevation gain since the start of 2022',
       data: elevationGainData,
+      formatTooltip: (y: any) => `${y} m`
     },
   ]
 
