@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
 export default function Footer() {
@@ -28,6 +29,11 @@ export default function Footer() {
             </Link>
           </div>
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
+            <Link href="https://www.strava.com">
+              <a rel="noopener noreferrer" target="_blank" className="flex items-center justify-center w-40 h-10 rounded-full dark:text-coolGray-900">
+                <img src="/images/api_logo_pwrdBy_strava_horiz_light.png" alt='Powered by Strava' />
+              </a>
+            </Link>
             <Link href="https://www.curtiscode.dev">
               <a rel="noopener noreferrer" target="_blank" className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-teal-400 dark:text-coolGray-900">
                 <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
