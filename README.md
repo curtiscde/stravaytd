@@ -1,4 +1,4 @@
-# Strava YTD Stats
+# Strava Year-To-Date Stats
 
 [![App CI](https://github.com/curtiscde/stravaytd/actions/workflows/app-ci.yml/badge.svg)](https://github.com/curtiscde/stravaytd/actions/workflows/app-ci.yml) [![Scripts CI](https://github.com/curtiscde/stravaytd/actions/workflows/gh-scripts-ci.yml/badge.svg)](https://github.com/curtiscde/stravaytd/actions/workflows/gh-scripts-ci.yml) [![Update YTD History](https://github.com/curtiscde/stravaytd/actions/workflows/update-ytd-history.yml/badge.svg)](https://github.com/curtiscde/stravaytd/actions/workflows/update-ytd-history.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/e1fb843a-952b-425a-a463-5bcdde5581e0/deploy-status)](https://app.netlify.com/sites/stravaytd/deploys)
 
