@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --watch",
-    "test:ci": "jest",
+    "test:ci": "jest --ci --collectCoverage",
     "update-ytd-history": "node ./build/updateYtdHistory.js",
     "update-current-ytd": "node ./build/updateCurrentYtd.js"
   },
