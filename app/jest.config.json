@@ -1,0 +1,13 @@
+{
+  "collectCoverageFrom": [
+    "**/*.{js,jsx,ts,tsx}",
+    "!**/node_modules/**",
+    "!**/.next/**",
+    "!**/out/**",
+    "!**/coverage/**",
+    "!**/public/**",
+    "!**/*.config.js",
+    "!.eslintrc.json",
+    "!next-env.d.ts"
+  ]
+}
