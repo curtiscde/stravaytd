@@ -43,4 +43,5 @@ jobs:
       uses: codecov/codecov-action@v2
       with:
           files: ./app/coverage/coverage-final.json,./github-actions/coverage/coverage-final.json
+          flags: app,actions
           token: ${{ secrets.CODECOV_TOKEN }}
