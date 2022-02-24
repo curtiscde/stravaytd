@@ -31,8 +31,16 @@ jobs:
       working-directory: app
       run: npm run test:ci
 
+    - name: Actions - install dependencies
+      working-directory: github-actions
+      run: npm install
+
+    - name: Actions - Run the tests
+      working-directory: github-actions
+      run: npm run test:ci
+
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
-          files: ./app/coverage/coverage-final.json
+          files: ./app/coverage/coverage-final.json,./github-actions/coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
