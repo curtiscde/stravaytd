@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import React from 'react';
 import {
   Chart,
@@ -27,7 +28,12 @@ Chart.register(
 
 dayjs.extend(advancedFormat);
 
-export default function YtdChart({ data, formatTooltip }: { data: any; formatTooltip?: (y: any) => string }) {
+interface YtdChartProps {
+  data: any;
+  formatTooltip?: (y: any) => string
+}
+
+export default function YtdChart({ data, formatTooltip }: YtdChartProps) {
   const options: ChartOptions = {
     normalized: true,
     responsive: true,
@@ -59,7 +65,10 @@ export default function YtdChart({ data, formatTooltip }: { data: any; formatToo
     },
   };
 
-  { /*
-          // @ts-ignore */ }
+  { /* @ts-ignore */ }
   return <Line options={options} data={data} />;
 }
+
+YtdChart.defaultProps = {
+  formatTooltip: null,
+};
