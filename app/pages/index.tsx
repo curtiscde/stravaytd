@@ -1,3 +1,4 @@
+/* eslint-disable  jsx-a11y/anchor-has-content */
 import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
@@ -43,6 +44,7 @@ interface HomeProps {
   elevationGainData: any;
 }
 
+// eslint-disable-next-line react/function-component-definition
 const Home: NextPage<HomeProps> = ({
   distanceData, runsData, movingTimeData, elevationGainData,
 }: HomeProps) => {
