@@ -11,7 +11,7 @@ export interface IAthlete {
   ytd: Array<IYtd>;
 }
 
-type IFilterPropertyName = 'count' | 'distance' | 'elevationGain' | 'movingTime'
+type IFilterPropertyName = 'count' | 'distance' | 'elevationGain' | 'movingTime';
 
 export function filterData(athletes: Array<IAthlete>, propertyName: IFilterPropertyName) {
   return athletes.map((athlete) => ({
@@ -22,7 +22,8 @@ export function filterData(athletes: Array<IAthlete>, propertyName: IFilterPrope
 
       if (!previousD || !nextD) return true;
 
-      return !(previousD[propertyName] === d[propertyName] && nextD[propertyName] === d[propertyName])
-    })
-  }))
+      return !(previousD[propertyName] === d[propertyName]
+        && nextD[propertyName] === d[propertyName]);
+    }),
+  }));
 }

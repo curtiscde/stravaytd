@@ -2,5 +2,5 @@ export function isAthleteAllowed(allowedAthletes: string, athleteId: number): bo
   return allowedAthletes
     .split(',')
     .map((athlete: string) => Number(athlete.split(':')[0]))
-    .includes(athleteId)
+    .includes(athleteId);
 }

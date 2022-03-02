@@ -23,5 +23,5 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 'off',
     'import/prefer-default-export': 'off',
     '@next/next/no-img-element': 'off',
-  },
+  }
 }

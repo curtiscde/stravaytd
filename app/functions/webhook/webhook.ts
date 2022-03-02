@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Handler } from '@netlify/functions';
 import { decrypt } from './decrypt';
 import { dispatchAction } from '../util/dispatchAction';
@@ -14,19 +15,18 @@ const getWebhook = (event: any) => {
   if (mode && token) {
     if (mode === 'subscribe' && token === process.env.STRAVA_VERIFY_TOKEN) {
       console.log('WEBHOOK_VERIFIED');
-      return { statusCode: 200, body: JSON.stringify({ "hub.challenge": challenge }) }
-    } else {
-      return { statusCode: 403 }
+      return { statusCode: 200, body: JSON.stringify({ 'hub.challenge': challenge }) };
     }
+    return { statusCode: 403 };
   }
 
   return {
-    statusCode: 500
-  }
-}
+    statusCode: 500,
+  };
+};
 
 const postWebhook = async (event: any) => {
-  console.log('postWebhook call')
+  console.log('postWebhook call');
   const { owner_id: ownerId } = JSON.parse(event.body);
 
   try {
@@ -35,19 +35,21 @@ const postWebhook = async (event: any) => {
     const accessToken = await getAccessToken(refreshToken);
     const athleteYtd = await getAthleteYtd({ accessToken, athleteId: ownerId });
     await dispatchAction(athleteYtd);
-  } catch (e) { }
-}
+  } catch (e) {
+    console.log('error dispatching action');
+  }
+};
 
 export const handler: Handler = async (event) => {
-  console.log('webhook call')
+  console.log('webhook call');
   if (event.httpMethod === 'GET') {
     return getWebhook(event);
   }
 
   if (event.httpMethod === 'POST') {
     await postWebhook(event);
-    return { statusCode: 200 }
+    return { statusCode: 200 };
   }
 
-  return { statusCode: 404 }
+  return { statusCode: 404 };
 };
