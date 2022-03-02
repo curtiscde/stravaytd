@@ -1,4 +1,4 @@
-import crypto from 'crypto'
+import crypto from 'crypto';
 
 export function encrypt(message: string) {
   const iv = crypto.randomBytes(16);
@@ -7,5 +7,5 @@ export function encrypt(message: string) {
 
   encrypted = Buffer.concat([encrypted, cipher.final()]);
 
-  return iv.toString('hex') + ':' + encrypted.toString('hex');
+  return `${iv.toString('hex')}:${encrypted.toString('hex')}`;
 }

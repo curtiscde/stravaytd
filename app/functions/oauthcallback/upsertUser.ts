@@ -1,19 +1,20 @@
+/* eslint-disable no-console */
 import { db } from '../../firebase/admin';
 import { encrypt } from './encrypt';
 import { IOAuthTokenResponse } from './IOAuthTokenResponse';
 
 async function deleteExistingUserDocs(id: number) {
-  return await db
+  return db
     .collection('users')
     .where('id', '==', id)
     .get()
-    .then(data => {
-      data.forEach(doc => doc.ref.delete())
-    })
+    .then((data) => {
+      data.forEach((doc) => doc.ref.delete());
+    });
 }
 
 async function addUser(authData: IOAuthTokenResponse) {
-  return await db
+  return db
     .collection('users')
     .add({
       id: authData.athlete.id,
@@ -21,10 +22,10 @@ async function addUser(authData: IOAuthTokenResponse) {
       dateAdded: new Date(),
     })
     .then(() => console.log('user added'))
-    .catch((e) => { throw new Error(e) });
+    .catch((e) => { throw new Error(e); });
 }
 
 export async function upsertUser(authData: IOAuthTokenResponse) {
   await deleteExistingUserDocs(authData.athlete.id);
-  return await addUser(authData);
+  return addUser(authData);
 }

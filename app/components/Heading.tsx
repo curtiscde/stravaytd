@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface HeadingProps {
   title: string;
   subtitle: string;
@@ -13,5 +15,5 @@ export default function Heading({ title, subtitle }: HeadingProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

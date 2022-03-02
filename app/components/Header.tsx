@@ -1,9 +1,10 @@
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 export default function Header() {
   return (
     <header className="container flex items-center justify-between w-full max-w-3xl px-6 py-10 mx-auto xl:max-w-5xl">
-      <Link href='/'>
+      <Link href="/">
         <a rel="noopener noreferrer" className="block h-6 text-2xl font-semibold">Strava Year-To-Date Stats</a>
       </Link>
       <div className="flex items-center">
@@ -15,5 +16,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }

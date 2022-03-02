@@ -2,8 +2,8 @@ export function mapAthleteName(allowedAthletes: string, athleteId: number): stri
   const athlete = allowedAthletes
     .split(',')
     .map((a: string) => {
-      const athlete = a.split(':');
-      return { id: Number(athlete[0]), name: athlete[1] }
+      const thisAthlete = a.split(':');
+      return { id: Number(thisAthlete[0]), name: thisAthlete[1] };
     })
     .find((a) => a.id === athleteId);
 

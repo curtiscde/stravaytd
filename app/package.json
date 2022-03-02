@@ -5,7 +5,7 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint --ext .ts,.tsx .",
     "test": "jest --watch",
     "test:ci": "jest --ci --collectCoverage"
   },
@@ -34,6 +34,8 @@
     "autoprefixer": "^10.4.2",
     "babel-jest": "^27.4.6",
     "eslint": "8.8.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-config-next": "12.0.9",
     "jest": "^27.4.7",
     "postcss": "^8.4.6",
