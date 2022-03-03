@@ -11,7 +11,8 @@ module.exports = {
     },
     ecmaVersion: 13,
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: 'tsconfig.json',
+    tsconfigRootDir: __dirname,
   },
   rules: {
     'react/function-component-definition': [
