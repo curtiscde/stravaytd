@@ -5,25 +5,9 @@ import { dispatchAction } from '../util/dispatchAction';
 import { getAccessToken } from './getAccessToken';
 import { getAthleteYtd } from '../util/getAthleteYtd';
 import { getToken } from './getToken';
+import { getWebhook } from './getWebhook';
 
 require('dotenv').config();
-
-const getWebhook = (event: any) => {
-  const mode = event.queryStringParameters['hub.mode'];
-  const token = event.queryStringParameters['hub.verify_token'];
-  const challenge = event.queryStringParameters['hub.challenge'];
-  if (mode && token) {
-    if (mode === 'subscribe' && token === process.env.STRAVA_VERIFY_TOKEN) {
-      console.log('WEBHOOK_VERIFIED');
-      return { statusCode: 200, body: JSON.stringify({ 'hub.challenge': challenge }) };
-    }
-    return { statusCode: 403 };
-  }
-
-  return {
-    statusCode: 500,
-  };
-};
 
 const postWebhook = async (event: any) => {
   console.log('postWebhook call');
