@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getStats returns stats 1`] = `
+Object {
+  "distanceData": Object {
+    "datasets": Array [
+      Object {
+        "backgroundColor": "rgba(255, 99, 132, 0.2)",
+        "borderColor": "rgba(255, 99, 132, 1)",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 10,
+          },
+          Object {
+            "x": 2,
+            "y": 12,
+          },
+        ],
+        "label": "foo",
+      },
+      Object {
+        "backgroundColor": "rgba(54, 162, 235, 0.2)",
+        "borderColor": "rgba(54, 162, 235, 1)",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 20,
+          },
+          Object {
+            "x": 2,
+            "y": 80,
+          },
+        ],
+        "label": "bar",
+      },
+    ],
+  },
+  "elevationGainData": Object {
+    "datasets": Array [
+      Object {
+        "backgroundColor": "rgba(255, 99, 132, 0.2)",
+        "borderColor": "rgba(255, 99, 132, 1)",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 3,
+          },
+          Object {
+            "x": 2,
+            "y": 7,
+          },
+        ],
+        "label": "foo",
+      },
+      Object {
+        "backgroundColor": "rgba(54, 162, 235, 0.2)",
+        "borderColor": "rgba(54, 162, 235, 1)",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 4,
+          },
+          Object {
+            "x": 2,
+            "y": 10,
+          },
+        ],
+        "label": "bar",
+      },
+    ],
+  },
+  "movingTimeData": Object {
+    "datasets": Array [
+      Object {
+        "backgroundColor": "rgba(255, 99, 132, 0.2)",
+        "borderColor": "rgba(255, 99, 132, 1)",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 5,
+          },
+          Object {
+            "x": 2,
+            "y": 10,
+          },
+        ],
+        "label": "foo",
+      },
+      Object {
+        "backgroundColor": "rgba(54, 162, 235, 0.2)",
+        "borderColor": "rgba(54, 162, 235, 1)",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 5,
+          },
+          Object {
+            "x": 2,
+            "y": 15,
+          },
+        ],
+        "label": "bar",
+      },
+    ],
+  },
+  "runsData": Object {
+    "datasets": Array [
+      Object {
+        "backgroundColor": "rgba(255, 99, 132, 0.2)",
+        "borderColor": "rgba(255, 99, 132, 1)",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 4,
+          },
+          Object {
+            "x": 2,
+            "y": 8,
+          },
+        ],
+        "label": "foo",
+      },
+      Object {
+        "backgroundColor": "rgba(54, 162, 235, 0.2)",
+        "borderColor": "rgba(54, 162, 235, 1)",
+        "data": Array [
+          Object {
+            "x": 1,
+            "y": 5,
+          },
+          Object {
+            "x": 2,
+            "y": 11,
+          },
+        ],
+        "label": "bar",
+      },
+    ],
+  },
+}
+`;
