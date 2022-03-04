@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 import { IOAuthTokenResponse } from './IOAuthTokenResponse';
 
 require('dotenv').config();
