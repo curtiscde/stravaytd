@@ -1,5 +1,5 @@
-{
-  "collectCoverageFrom": [
+module.exports = {
+  collectCoverageFrom: [
     "**/*.{js,jsx,ts,tsx}",
     "!**/node_modules/**",
     "!**/.next/**",
@@ -10,5 +10,5 @@
     "!.eslintrc.json",
     "!next-env.d.ts"
   ],
-  "testEnvironment": "jest-environment-jsdom"
+  testEnvironment: "jest-environment-jsdom"
 }
