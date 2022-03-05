@@ -13,7 +13,7 @@ jest.mock('./getAuthData', () => ({
 }));
 
 jest.mock('../../util/isAthleteAllowed');
-jest.mock('./upsertUser');
+jest.mock('./upsertUser', () => ({ upsertUser: jest.fn() }));
 
 describe('authoriseUser', () => {
   describe('user is allowed', () => {
