@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
-import { authoriseUser } from './authoriseUser';
+import { isAthleteAllowed } from '../../util/isAthleteAllowed';
 import { upsertUser } from './upsertUser';
+import { authoriseUser } from './authoriseUser';
 
 const authData = {
   athlete: { id: 'athleteid' },
@@ -11,35 +12,50 @@ jest.mock('./getAuthData', () => ({
   getAuthData: () => authData,
 }));
 
-jest.mock('../../util/isAthleteAllowed', () => ({
-  isAthleteAllowed: () => true,
-}));
-
+jest.mock('../../util/isAthleteAllowed');
 jest.mock('./upsertUser');
 
 describe('authoriseUser', () => {
-  let res: any;
+  describe('user is allowed', () => {
+    let res: any;
 
-  beforeAll(async () => {
-    jest.spyOn(global.console, 'log');
-    res = await authoriseUser('foo');
+    beforeAll(async () => {
+      const mockIsAthleteAllowed = isAthleteAllowed as jest.MockedFunction<typeof isAthleteAllowed>;
+      mockIsAthleteAllowed.mockReturnValueOnce(true);
+      jest.spyOn(global.console, 'log');
+      res = await authoriseUser('foo');
+    });
+
+    it('calls upsertUser', () => {
+      expect(upsertUser).toHaveBeenCalledWith(authData);
+    });
+
+    it('logs', () => {
+      expect(console.log).toHaveBeenCalledWith('user added');
+    });
+
+    it('returns access token and athleteid', () => {
+      expect(res).toEqual({
+        authorised: true,
+        authData: {
+          accessToken: 'access_token',
+          athleteId: 'athleteid',
+        },
+      });
+    });
   });
 
-  it('calls upsertUser', () => {
-    expect(upsertUser).toHaveBeenCalledWith(authData);
-  });
+  describe('user is not allowed', () => {
+    let res: any;
 
-  it('logs', () => {
-    expect(console.log).toHaveBeenCalledWith('user added');
-  });
+    beforeAll(async () => {
+      const mockIsAthleteAllowed = isAthleteAllowed as jest.MockedFunction<typeof isAthleteAllowed>;
+      mockIsAthleteAllowed.mockReturnValueOnce(false);
+      res = await authoriseUser('foo');
+    });
 
-  it('returns access token and athleteid', () => {
-    expect(res).toEqual({
-      authorised: true,
-      authData: {
-        accessToken: 'access_token',
-        athleteId: 'athleteid',
-      },
+    it('returns authorised:false', () => {
+      expect(res).toEqual({ authorised: false });
     });
   });
 });
