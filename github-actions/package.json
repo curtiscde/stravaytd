@@ -6,7 +6,8 @@
     "test": "jest --watch",
     "test:ci": "jest --ci --collectCoverage",
     "update-ytd-history": "node ./build/updateYtdHistory.js",
-    "update-current-ytd": "node ./build/updateCurrentYtd.js"
+    "update-current-ytd": "node ./build/updateCurrentYtd.js",
+    "lint": "eslint --ext .ts,.tsx ."
   },
   "author": "",
   "license": "ISC",
@@ -17,9 +18,12 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
-    "@types/jest": "^27.4.0",
+    "@types/jest": "^27.4.1",
     "@types/node": "^17.0.14",
     "babel-jest": "^27.4.6",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^16.1.0",
     "jest": "^27.4.7"
   }
 }
