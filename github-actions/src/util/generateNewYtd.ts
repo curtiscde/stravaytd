@@ -1,6 +1,6 @@
 import { IYtdHistory } from '../types/IYtdHistory';
 
-function generateMeta(ytd, now) {
+function generateMeta(ytd, now: number) {
   return {
     lastUpdated: now,
     version: (ytd?.meta?.version || 0) + 1,
