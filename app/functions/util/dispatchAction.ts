@@ -23,5 +23,5 @@ export async function dispatchAction(athleteYtd: IAthleteYtd) {
     ref: process.env.GITHUB_REF,
     inputs: mapAthleteYtdToString(athleteYtd),
   });
-  console.log('action dispatched');
+  console.log('update-current-ytd action dispatched');
 }
