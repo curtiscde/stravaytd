@@ -52,6 +52,7 @@ jobs:
          --elevationgain=${{ github.event.inputs.elevationgain }}
     - name: Commit and push
       run: |-
+        git pull
         git diff
         git config --global user.email "actions@users.noreply.github.com"
         git config --global user.name "gh action bot"
