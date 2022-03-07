@@ -1,30 +1,4 @@
-/* eslint-disable no-console */
 import { Handler } from '@netlify/functions';
-import { IAthleteYtd } from '../types/IAthleteYtd';
-import { dispatchAction } from '../util/dispatchAction';
-import { getAthleteYtd } from '../util/getAthleteYtd';
-import { authoriseUser } from './authoriseUser';
+import { handleOauthcallback } from './handleOauthcallback';
 
-require('dotenv').config();
-
-export const handler: Handler = async (event: any) => {
-  const { code } = event.queryStringParameters;
-
-  try {
-    const { authorised, authData } = await authoriseUser(code);
-    if (!authorised) return { statusCode: 401 };
-    const { accessToken, athleteId } = authData!;
-    const athleteYtd: IAthleteYtd = await getAthleteYtd({ accessToken, athleteId });
-    await dispatchAction(athleteYtd);
-  } catch (e) {
-    return { statusCode: 500 };
-  }
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      verified: true,
-      ytdSet: true,
-    }),
-  };
-};
+export const handler: Handler = async (event: any) => handleOauthcallback(event);

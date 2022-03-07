@@ -3,6 +3,9 @@
 [![App CI](https://github.com/curtiscde/stravaytd/actions/workflows/ci-app.yml/badge.svg)](https://github.com/curtiscde/stravaytd/actions/workflows/ci-app.yml) [![Actions CI](https://github.com/curtiscde/stravaytd/actions/workflows/ci-actions.yml/badge.svg)](https://github.com/curtiscde/stravaytd/actions/workflows/ci-actions.yml) [![Update YTD History](https://github.com/curtiscde/stravaytd/actions/workflows/update-ytd-history.yml/badge.svg)](https://github.com/curtiscde/stravaytd/actions/workflows/update-ytd-history.yml) [![codecov](https://codecov.io/gh/curtiscde/stravaytd/branch/main/graph/badge.svg?token=AWEBPKHI2B)](https://codecov.io/gh/curtiscde/stravaytd) [![Netlify Status](https://api.netlify.com/api/v1/badges/e1fb843a-952b-425a-a463-5bcdde5581e0/deploy-status)](https://app.netlify.com/sites/stravaytd/deploys)
 
  - 🌐 https://stravaytd.curtiscode.dev
+ - 📝 https://www.curtiscode.dev/post/project/displaying-strava-stats-using-webhooks
+
+![](https://www.curtiscode.dev/images/post/stravaytd/screenshot.png)
 
 ## Environment Variables
 
