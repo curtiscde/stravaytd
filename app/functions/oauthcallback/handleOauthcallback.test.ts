@@ -12,7 +12,7 @@ const mockAthleteYtd: IAthleteYtd = {
 };
 
 jest.mock('./authoriseUser', () => ({
-  authoriseUser: jest.fn(() => ({ authorised: true, authData: { accessToken: 'foo', athleteId: 123 } })),
+  authoriseUser: jest.fn(),
 }));
 
 jest.mock('../util/getAthleteYtd', () => ({
@@ -28,27 +28,45 @@ describe('handleOauthcallback', () => {
     queryStringParameters: { code: 'qspcode' },
   };
 
-  let response: any;
+  describe('authorised', () => {
+    let response: any;
 
-  beforeAll(async () => {
-    response = await handleOauthcallback(event);
+    beforeAll(async () => {
+      authoriseUser.mockReturnValue({ authorised: true, authData: { accessToken: 'foo', athleteId: 123 } });
+      response = await handleOauthcallback(event);
+    });
+
+    it('calls authoriseUser', () => {
+      expect(authoriseUser).toHaveBeenCalledWith('qspcode');
+    });
+
+    it('calls dispatchAction', () => {
+      expect(dispatchAction).toHaveBeenCalledWith(mockAthleteYtd);
+    });
+
+    it('returns 200', () => {
+      expect(response).toEqual({
+        statusCode: 200,
+        body: JSON.stringify({
+          verified: true,
+          ytdSet: true,
+        }),
+      });
+    });
   });
 
-  it('calls authoriseUser', () => {
-    expect(authoriseUser).toHaveBeenCalledWith('qspcode');
-  });
+  describe('unauthorised', () => {
+    let response: any;
 
-  it('calls dispatchAction', () => {
-    expect(dispatchAction).toHaveBeenCalledWith(mockAthleteYtd);
-  });
+    beforeAll(async () => {
+      authoriseUser.mockReturnValue({ authorised: false });
+      response = await handleOauthcallback(event);
+    });
 
-  it('returns 200', () => {
-    expect(response).toEqual({
-      statusCode: 200,
-      body: JSON.stringify({
-        verified: true,
-        ytdSet: true,
-      }),
+    it('returns 401', () => {
+      expect(response).toEqual({
+        statusCode: 401,
+      });
     });
   });
 });
