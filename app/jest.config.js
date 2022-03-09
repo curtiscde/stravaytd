@@ -6,6 +6,8 @@ module.exports = {
     "!**/out/**",
     "!**/coverage/**",
     "!**/public/**",
+    "!types/**",
+    "!functions/types/**",
     "!**/*.config.js",
     "!.eslintrc.json",
     "!next-env.d.ts"
