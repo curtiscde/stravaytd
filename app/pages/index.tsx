@@ -7,22 +7,26 @@ import YtdChart from '../components/YtdChart';
 import { getStats } from '../util/getStats';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { formatTooltip } from '../util/formatTooltip';
+import { FormatType } from '../types/FormatType';
+
+interface Section {
+  anchor: string;
+  title: string;
+  subtitle: string;
+  data: any;
+  formatType: FormatType;
+}
 
 interface SectionsProps {
-  sections: Array<{
-    anchor: string;
-    title: string;
-    subtitle: string;
-    data: any;
-    formatTooltip?: (y: any) => string;
-  }>
+  sections: Array<Section>;
 }
 
 function Sections({ sections }: SectionsProps) {
   return (
     <>
       {sections.map(({
-        anchor, title, subtitle, data, formatTooltip,
+        anchor, title, subtitle, data, formatType,
       }) => (
         <div key={anchor}>
           <a id={anchor} />
@@ -30,7 +34,10 @@ function Sections({ sections }: SectionsProps) {
             title={title}
             subtitle={subtitle}
           />
-          <YtdChart data={data} formatTooltip={formatTooltip} />
+          <YtdChart
+            data={data}
+            formatTooltip={(y: any) => formatTooltip(y, formatType)}
+          />
         </div>
       ))}
     </>
@@ -48,38 +55,34 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({
   distanceData, runsData, movingTimeData, elevationGainData,
 }: HomeProps) => {
-  const sections = [
+  const sections: Section[] = [
     {
       anchor: 'distance',
       title: '🏃‍♂️ Total Distance',
       subtitle: 'Total distance since the start of 2022',
       data: distanceData,
-      formatTooltip: (y: any) => `${y} km`,
+      formatType: 'km',
     },
     {
       anchor: 'runs',
       title: '💯 Total Runs',
       subtitle: 'Total runs since the start of 2022',
       data: runsData,
-      formatTooltip: (y: any) => `${y} runs`,
+      formatType: 'runs',
     },
     {
       anchor: 'time',
       title: '⏱ Total Moving Time',
       subtitle: 'Total moving time since the start of 2022',
       data: movingTimeData,
-      formatTooltip: (y: any) => {
-        const hours = Math.floor(y / 60);
-        const minutes = y % 60;
-        return `${hours}h ${parseInt(minutes.toString(), 10)}m`;
-      },
+      formatType: 'time',
     },
     {
       anchor: 'elevation',
       title: '🏔 Total Elevation Gain',
       subtitle: 'Total elevation gain since the start of 2022',
       data: elevationGainData,
-      formatTooltip: (y: any) => `${y} m`,
+      formatType: 'm',
     },
   ];
 
