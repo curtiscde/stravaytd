@@ -1,4 +1,5 @@
 import * as fsp from 'fs/promises';
+import * as core from '@actions/core';
 import { generateNewYtd } from './generateNewYtd';
 import { getAthletesCurrentYtd } from './getAthletesCurrentYtd';
 import { getYtdHistory } from './getYtdHistory';
@@ -13,4 +14,6 @@ export const updateYtdHistory = async () => {
   const newYtd = generateNewYtd(ytd, athletesYtd, now);
 
   await fsp.writeFile(ytdFileLocation, JSON.stringify(newYtd));
+
+  core.setOutput('ytdVersion', newYtd.meta.version);
 };
