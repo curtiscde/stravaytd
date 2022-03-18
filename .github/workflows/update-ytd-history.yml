@@ -30,5 +30,5 @@ jobs:
         git config --global user.email "actions@users.noreply.github.com"
         git config --global user.name "gh action bot"
         git add -A
-        git commit -m "🗂 Update ytd history"
+        git commit -m "🗂 Update ytd history (v${{ steps.update-ytd.outputs.ytdVersion }})"
         git push
