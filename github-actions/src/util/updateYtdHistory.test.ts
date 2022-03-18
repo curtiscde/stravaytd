@@ -1,4 +1,5 @@
 import * as fsp from 'fs/promises';
+import * as core from '@actions/core';
 import { updateYtdHistory } from './updateYtdHistory';
 
 const mockNewYtd = {
@@ -9,6 +10,7 @@ const mockNewYtd = {
 };
 
 jest.mock('fs/promises');
+jest.mock('@actions/core', () => ({ setOutput: jest.fn() }));
 jest.mock('./getYtdHistory', () => ({
   getYtdHistory: () => ({
     meta: { lastUpdated: 1, version: 5 },
@@ -32,5 +34,9 @@ describe('updateYtdHistory', () => {
       '../app/data/ytdHistory.json',
       JSON.stringify(mockNewYtd),
     );
+  });
+
+  it('sets output', () => {
+    expect(core.setOutput).toHaveBeenCalledWith('ytdVersion', mockNewYtd.meta.version);
   });
 });
