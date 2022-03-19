@@ -24,6 +24,7 @@ jobs:
     - name: Update YTD History
       working-directory: github-actions
       run: npm run update-ytd-history
+      id: update-ytd
     - name: Commit and push
       run: |-
         git diff
