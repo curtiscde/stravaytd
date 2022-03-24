@@ -9,6 +9,9 @@ jest.mock('fs', () => ({
 }));
 jest.mock('fs/promises');
 jest.mock('@actions/core');
+jest.mock('child_process', () => ({
+  spawn: jest.fn(),
+}));
 jest.mock('./getAthleteCurrentYtd');
 
 describe('updateCurrentYtd', () => {

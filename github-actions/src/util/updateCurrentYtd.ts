@@ -40,9 +40,7 @@ export const updateCurrentYtd = async () => {
 
   if (ytdHasUpdates(currentAthleteYtd, newYtd)) {
     if (!fs.existsSync(currentYtdPath)) fs.mkdirSync(currentYtdPath);
-    await fsp.writeFile(`${currentYtdPath}/athlete${athleteId}.json`, JSON.stringify({
-      athleteId, count, distance, movingTime, elevationGain,
-    }));
+    await fsp.writeFile(`${currentYtdPath}/athlete${athleteId}.json`, JSON.stringify(newYtd));
 
     gitCommit(newYtd);
   } else {
