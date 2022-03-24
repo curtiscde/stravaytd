@@ -27,7 +27,7 @@ export const updateCurrentYtd = async () => {
   const currentYtdPath = '../data/current-ytd';
   const currentAthleteYtd = getAthleteCurrentYtd(currentYtdPath, athleteId);
 
-  if (ytdHasUpdates(currentAthleteYtd, newYtd)) {
+  if (!currentAthleteYtd || ytdHasUpdates(currentAthleteYtd, newYtd)) {
     if (!fs.existsSync(currentYtdPath)) fs.mkdirSync(currentYtdPath);
     await fsp.writeFile(`${currentYtdPath}/athlete${athleteId}.json`, JSON.stringify({
       athleteId, count, distance, movingTime, elevationGain,
