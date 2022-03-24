@@ -1,42 +1,86 @@
-import * as fsp from 'fs/promises';
+import fsp from 'fs/promises';
 import * as core from '@actions/core';
-import { updateYtdHistory } from './updateYtdHistory';
+import { updateCurrentYtd } from './updateCurrentYtd';
+import { getAthleteCurrentYtd } from './getAthleteCurrentYtd';
 
-const mockNewYtd = {
-  meta: { lastUpdated: 5, version: 6 },
-  athletes: [{
-    athleteId: 1, distance: 2, count: 3, elevationGain: 4, movingTime: 5,
-  }],
-};
-
+jest.mock('fs', () => ({
+  existsSync: () => true,
+  readFileSync: jest.fn(),
+}));
 jest.mock('fs/promises');
-jest.mock('@actions/core', () => ({ setOutput: jest.fn() }));
-jest.mock('./getYtdHistory', () => ({
-  getYtdHistory: () => ({
-    meta: { lastUpdated: 1, version: 5 },
-    athletes: [],
-  }),
-}));
-jest.mock('./getAthletesCurrentYtd', () => ({
-  getAthletesCurrentYtd: () => [],
-}));
-jest.mock('./generateNewYtd', () => ({
-  generateNewYtd: () => mockNewYtd,
-}));
+jest.mock('@actions/core');
+jest.mock('./getAthleteCurrentYtd');
 
-describe('updateYtdHistory', () => {
-  beforeAll(async () => {
-    await updateYtdHistory();
+describe('updateCurrentYtd', () => {
+  const mockWriteFile = fsp.writeFile as jest.MockedFunction<typeof fsp.writeFile>;
+  const mockGetAthleteCurrentYtd = getAthleteCurrentYtd as jest.MockedFunction<
+    typeof getAthleteCurrentYtd
+  >;
+
+  const athleteId = 12345;
+  const count = 11;
+  const distance = 12;
+  const movingTime = 13;
+  const elevationGain = 14;
+
+  beforeAll(() => {
+    process.env.npm_config_athleteid = athleteId.toString();
+    process.env.npm_config_count = count.toString();
+    process.env.npm_config_distance = distance.toString();
+    process.env.npm_config_movingtime = movingTime.toString();
+    process.env.npm_config_elevationgain = elevationGain.toString();
   });
 
-  it('writes file', () => {
-    expect(fsp.writeFile).toHaveBeenCalledWith(
-      '../app/data/ytdHistory.json',
-      JSON.stringify(mockNewYtd),
-    );
+  describe('ytd has changed', () => {
+    beforeAll(async () => {
+      mockGetAthleteCurrentYtd.mockReturnValueOnce({
+        athleteId,
+        count: 10,
+        distance: 11,
+        movingTime: 12,
+        elevationGain: 13,
+      });
+
+      await updateCurrentYtd();
+    });
+
+    afterAll(() => {
+      mockWriteFile.mockClear();
+    });
+
+    it('writes file', () => {
+      expect(fsp.writeFile).toHaveBeenCalledWith(
+        '../data/current-ytd/athlete12345.json',
+        JSON.stringify({
+          athleteId,
+          count,
+          distance,
+          movingTime,
+          elevationGain,
+        }),
+      );
+    });
   });
 
-  it('sets output', () => {
-    expect(core.setOutput).toHaveBeenCalledWith('ytdVersion', mockNewYtd.meta.version);
+  describe('ytd has not changed', () => {
+    beforeAll(async () => {
+      mockGetAthleteCurrentYtd.mockReturnValueOnce({
+        athleteId,
+        count,
+        distance,
+        movingTime,
+        elevationGain,
+      });
+
+      await updateCurrentYtd();
+    });
+
+    it('does not write file', () => {
+      expect(fsp.writeFile).not.toHaveBeenCalled();
+    });
+
+    it('logs no update', () => {
+      expect(core.info).toHaveBeenCalledWith('no ytd updates');
+    });
   });
 });
