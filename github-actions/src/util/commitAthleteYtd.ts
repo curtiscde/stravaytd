@@ -2,7 +2,7 @@ import { spawn } from 'child_process';
 import { IAthleteYtd } from '../types/IAthleteYtd';
 
 export const commitAthleteYtd = (athleteYtd: IAthleteYtd) => {
-  const commitMessage = `🏃 Athlete YTD ${athleteYtd.athleteId} (run ${athleteYtd.count})`;
+  const commitMessage = `"🏃 Athlete YTD ${athleteYtd.athleteId} (run ${athleteYtd.count})"`;
 
   spawn('git', ['pull']);
   spawn('git', ['diff']);
