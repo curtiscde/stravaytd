@@ -34,6 +34,7 @@ export const updateCurrentYtd = async () => {
     }));
 
     commitAthleteYtd(newYtd);
+    core.info('new athlete ytd committed');
   } else {
     core.info('no ytd updates');
   }
