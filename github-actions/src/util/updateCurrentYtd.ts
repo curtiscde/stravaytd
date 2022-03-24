@@ -21,7 +21,7 @@ const gitCommit = (athleteYtd: IAthleteYtd) => {
   spawn('git', ['add', '-A']);
   spawn('git', ['commit', '-m', `"🏃 Update athlete ytd ${athleteYtd.athleteId}"`]);
   spawn('git', ['push']);
-};
+}
 
 export const updateCurrentYtd = async () => {
   const athleteId = Number(process.env.npm_config_athleteid);
