@@ -25,7 +25,6 @@ export const updateCurrentYtd = async () => {
   };
 
   const currentYtdPath = '../data/current-ytd';
-
   const currentAthleteYtd = getAthleteCurrentYtd(currentYtdPath, athleteId);
 
   if (ytdHasUpdates(currentAthleteYtd, newYtd)) {
