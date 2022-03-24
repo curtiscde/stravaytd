@@ -17,6 +17,6 @@ describe('commitAthleteYtd', () => {
   });
 
   it('commits', () => {
-    expect(spawn).toHaveBeenCalledWith('git', ['commit', '-m', '"🏃 Update athlete ytd 12345"']);
+    expect(spawn).toHaveBeenCalledWith('git', ['commit', '-m', '🏃 Athlete YTD 12345 (run 2)']);
   });
 });

@@ -7,6 +7,6 @@ export const commitAthleteYtd = (athleteYtd: IAthleteYtd) => {
   spawn('git', ['config', '--global', 'user.email', '"actions@users.noreply.github.com"']);
   spawn('git', ['config', '--global', 'user.name', '"gh action bot"']);
   spawn('git', ['add', '-A']);
-  spawn('git', ['commit', '-m', `"🏃 Update athlete ytd ${athleteYtd.athleteId}"`]);
+  spawn('git', ['commit', '-m', `🏃 Athlete YTD ${athleteYtd.athleteId} (run ${athleteYtd.count})`]);
   spawn('git', ['push']);
 };
