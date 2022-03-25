@@ -5,7 +5,7 @@ jest.mock('child_process', () => ({
   spawn: jest.fn(),
 }));
 
-describe('commitAthleteYtd', () => {
+describe.skip('commitAthleteYtd', () => {
   beforeAll(() => {
     commitAthleteYtd({
       athleteId: 12345,
