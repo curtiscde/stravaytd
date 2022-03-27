@@ -29,6 +29,6 @@ describe('commitAthleteYtd', () => {
   });
 
   it('commits', () => {
-    expect(core.info).toHaveBeenCalledWith('new athlete ytd committed: \'🏃 Athlete YTD 12345 (run 2)\'');
+    expect(core.info).toHaveBeenCalledWith('new athlete ytd committed: \'🏃 Athlete ytd 12345 (r2)\'');
   });
 });

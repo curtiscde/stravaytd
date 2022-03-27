@@ -4,7 +4,7 @@ import * as core from '@actions/core';
 import { IAthleteYtd } from '../types/IAthleteYtd';
 
 export const commitAthleteYtd = async (athleteYtd: IAthleteYtd) => {
-  const commitMessage = `🏃 Athlete YTD ${athleteYtd.athleteId} (run ${athleteYtd.count})`;
+  const commitMessage = `🏃 Athlete ytd ${athleteYtd.athleteId} (r${athleteYtd.count})`;
 
   const git: SimpleGit = simpleGit().clean(CleanOptions.FORCE);
 
