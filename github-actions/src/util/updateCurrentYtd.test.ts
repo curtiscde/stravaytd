@@ -83,7 +83,7 @@ describe('updateCurrentYtd', () => {
     });
 
     it('logs no update', () => {
-      expect(core.info).toHaveBeenCalledWith('no ytd updates');
+      expect(core.info).toHaveBeenCalledWith('no ytd updates for athlete 12345');
     });
   });
 });

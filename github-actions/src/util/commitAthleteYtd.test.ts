@@ -1,13 +1,25 @@
-import { spawn } from 'child_process';
+import * as core from '@actions/core';
 import { commitAthleteYtd } from './commitAthleteYtd';
 
-jest.mock('child_process', () => ({
-  spawn: jest.fn(),
+jest.mock('@actions/core');
+
+jest.mock('simple-git', () => ({
+  __esModule: true,
+  default: jest.fn(() => ({
+    clean: jest.fn(() => ({
+      pull: jest.fn(),
+      addConfig: jest.fn(),
+      add: jest.fn(),
+      commit: jest.fn(),
+      push: jest.fn(),
+    })),
+  })),
+  CleanOptions: { FORCE: '' },
 }));
 
-describe.skip('commitAthleteYtd', () => {
-  beforeAll(() => {
-    commitAthleteYtd({
+describe('commitAthleteYtd', () => {
+  beforeAll(async () => {
+    await commitAthleteYtd({
       athleteId: 12345,
       distance: 5000,
       movingTime: 566,
@@ -17,6 +29,6 @@ describe.skip('commitAthleteYtd', () => {
   });
 
   it('commits', () => {
-    expect(spawn).toHaveBeenCalledWith('git', ['commit', '-m', '🏃 Athlete YTD 12345 (run 2)']);
+    expect(core.info).toHaveBeenCalledWith('new athlete ytd committed: \'🏃 Athlete YTD 12345 (run 2)\'');
   });
 });
