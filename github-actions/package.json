@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "simple-git": "^3.4.0",
+    "simple-git": "^3.5.0",
     "typescript": "^4.5.5"
   },
   "devDependencies": {
