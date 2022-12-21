@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getStats returns stats 1`] = `
+exports[`getStats year 2022 returns stats 1`] = `
 Object {
   "distanceData": Object {
     "datasets": Array [
@@ -9,11 +9,11 @@ Object {
         "borderColor": "rgba(255, 99, 132, 1)",
         "data": Array [
           Object {
-            "x": 1,
+            "x": 1640995200000,
             "y": 10,
           },
           Object {
-            "x": 2,
+            "x": 1646092800000,
             "y": 12,
           },
         ],
@@ -24,11 +24,11 @@ Object {
         "borderColor": "rgba(54, 162, 235, 1)",
         "data": Array [
           Object {
-            "x": 1,
+            "x": 1640995200000,
             "y": 20,
           },
           Object {
-            "x": 2,
+            "x": 1646092800000,
             "y": 80,
           },
         ],
@@ -43,11 +43,11 @@ Object {
         "borderColor": "rgba(255, 99, 132, 1)",
         "data": Array [
           Object {
-            "x": 1,
+            "x": 1640995200000,
             "y": 3,
           },
           Object {
-            "x": 2,
+            "x": 1646092800000,
             "y": 7,
           },
         ],
@@ -58,11 +58,11 @@ Object {
         "borderColor": "rgba(54, 162, 235, 1)",
         "data": Array [
           Object {
-            "x": 1,
+            "x": 1640995200000,
             "y": 4,
           },
           Object {
-            "x": 2,
+            "x": 1646092800000,
             "y": 10,
           },
         ],
@@ -77,11 +77,11 @@ Object {
         "borderColor": "rgba(255, 99, 132, 1)",
         "data": Array [
           Object {
-            "x": 1,
+            "x": 1640995200000,
             "y": 5,
           },
           Object {
-            "x": 2,
+            "x": 1646092800000,
             "y": 10,
           },
         ],
@@ -92,11 +92,11 @@ Object {
         "borderColor": "rgba(54, 162, 235, 1)",
         "data": Array [
           Object {
-            "x": 1,
+            "x": 1640995200000,
             "y": 5,
           },
           Object {
-            "x": 2,
+            "x": 1646092800000,
             "y": 15,
           },
         ],
@@ -111,11 +111,11 @@ Object {
         "borderColor": "rgba(255, 99, 132, 1)",
         "data": Array [
           Object {
-            "x": 1,
+            "x": 1640995200000,
             "y": 4,
           },
           Object {
-            "x": 2,
+            "x": 1646092800000,
             "y": 8,
           },
         ],
@@ -126,11 +126,11 @@ Object {
         "borderColor": "rgba(54, 162, 235, 1)",
         "data": Array [
           Object {
-            "x": 1,
+            "x": 1640995200000,
             "y": 5,
           },
           Object {
-            "x": 2,
+            "x": 1646092800000,
             "y": 11,
           },
         ],

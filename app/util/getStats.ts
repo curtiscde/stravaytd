@@ -27,7 +27,11 @@ const getStyles = (index: number) => {
   };
 };
 
-export function getStats(allowedAthletes: string) {
+interface GetStats {
+  allowedAthletes: string
+}
+
+export function getStats({ allowedAthletes }: GetStats) {
   const ytdHistoryFile = fs.readFileSync('../app/data/ytdHistory.json', 'utf-8');
   const { athletes }: any = JSON.parse(ytdHistoryFile);
 

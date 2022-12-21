@@ -106,7 +106,7 @@ export async function getStaticProps() {
   const allowedAthletes = process.env.ALLOWED_ATHLETES || '';
   const {
     distanceData, runsData, movingTimeData, elevationGainData,
-  } = getStats(allowedAthletes);
+  } = getStats({ allowedAthletes });
   return {
     props: {
       distanceData,
