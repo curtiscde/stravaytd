@@ -49,6 +49,7 @@ interface HomeProps {
   runsData: any;
   movingTimeData: any;
   elevationGainData: any;
+  year: number;
 }
 
 // eslint-disable-next-line react/function-component-definition
@@ -108,7 +109,7 @@ export default Home;
 
 export async function getStaticProps() {
   const allowedAthletes = process.env.ALLOWED_ATHLETES || '';
-  const year = 2022;
+  const year = 2023;
   const {
     distanceData, runsData, movingTimeData, elevationGainData,
   } = getStats({ allowedAthletes, year });
