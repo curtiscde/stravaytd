@@ -29,14 +29,19 @@ const getStyles = (index: number) => {
 
 interface GetStats {
   allowedAthletes: string
+  year: number
 }
 
-export function getStats({ allowedAthletes }: GetStats) {
+export function getStats({ allowedAthletes, year }: GetStats) {
   const ytdHistoryFile = fs.readFileSync('../app/data/ytdHistory.json', 'utf-8');
   const { athletes }: any = JSON.parse(ytdHistoryFile);
 
   const distanceData = {
-    datasets: filterData(athletes, 'distance').map((athlete: any, index: any) => ({
+    datasets: filterData({
+      athletes,
+      propertyName: 'distance',
+      year,
+    }).map((athlete: any, index: any) => ({
       label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
@@ -46,7 +51,11 @@ export function getStats({ allowedAthletes }: GetStats) {
   };
 
   const runsData = {
-    datasets: filterData(athletes, 'count').map((athlete: any, index: any) => ({
+    datasets: filterData({
+      athletes,
+      propertyName: 'distance',
+      year,
+    }).map((athlete: any, index: any) => ({
       label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
@@ -56,7 +65,11 @@ export function getStats({ allowedAthletes }: GetStats) {
   };
 
   const movingTimeData = {
-    datasets: filterData(athletes, 'movingTime').map((athlete: any, index: any) => ({
+    datasets: filterData({
+      athletes,
+      propertyName: 'distance',
+      year,
+    }).map((athlete: any, index: any) => ({
       label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({
@@ -66,7 +79,11 @@ export function getStats({ allowedAthletes }: GetStats) {
   };
 
   const elevationGainData = {
-    datasets: filterData(athletes, 'elevationGain').map((athlete: any, index: any) => ({
+    datasets: filterData({
+      athletes,
+      propertyName: 'distance',
+      year,
+    }).map((athlete: any, index: any) => ({
       label: mapAthleteName(allowedAthletes, athlete.athleteId),
       ...getStyles(index),
       data: athlete.ytd.map((data: any) => ({

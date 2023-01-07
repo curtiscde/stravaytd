@@ -9,6 +9,9 @@ jest.mock('fs', () => ({
         athleteId: 123,
         ytd: [
           {
+            date: convertToTimestamp('2021-02-02'), distance: 123, movingTime: 456, elevationGain: 7, count: 8,
+          },
+          {
             date: convertToTimestamp('2022-01-01'), distance: 10000, movingTime: 300, elevationGain: 3, count: 4,
           },
           {
@@ -19,6 +22,9 @@ jest.mock('fs', () => ({
       {
         athleteId: 456,
         ytd: [
+          {
+            date: convertToTimestamp('2021-02-02'), distance: 123, movingTime: 456, elevationGain: 7, count: 8,
+          },
           {
             date: convertToTimestamp('2022-01-01'), distance: 20000, movingTime: 300, elevationGain: 4, count: 5,
           },
@@ -36,7 +42,7 @@ describe('getStats', () => {
 
   describe('year 2022', () => {
     beforeAll(() => {
-      stats = getStats({ allowedAthletes: '123:foo,456:bar' });
+      stats = getStats({ allowedAthletes: '123:foo,456:bar', year: 2022 });
     });
 
     it('returns stats', () => {
