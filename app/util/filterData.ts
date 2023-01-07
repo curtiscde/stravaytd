@@ -11,12 +11,21 @@ export interface IAthlete {
   ytd: Array<IYtd>;
 }
 
+interface FilterDataArgs {
+  athletes: Array<IAthlete>
+  propertyName: IFilterPropertyName
+  year: number
+}
+
 type IFilterPropertyName = 'count' | 'distance' | 'elevationGain' | 'movingTime';
 
-export function filterData(athletes: Array<IAthlete>, propertyName: IFilterPropertyName) {
+export function filterData({ athletes, propertyName, year }: FilterDataArgs) {
   return athletes.map((athlete) => ({
     ...athlete,
     ytd: athlete.ytd.filter((d, i) => {
+      const ytdYear = new Date(d.date).getFullYear();
+      if (ytdYear !== year) return false;
+
       const previousD = athlete.ytd[i - 1];
       const nextD = athlete.ytd[i + 1];
 

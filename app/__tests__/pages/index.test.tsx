@@ -6,6 +6,7 @@ const distanceData = 1;
 const runsData = 2;
 const movingTimeData = 3;
 const elevationGainData = 4;
+const year = 2023;
 
 jest.mock('../../util/getStats', () => ({
   getStats: () => ({
@@ -54,6 +55,7 @@ describe('Home', () => {
         movingTimeData={mockData}
         runsData={mockData}
         elevationGainData={mockData}
+        year={year}
       />,
     ).container;
   });
@@ -71,6 +73,7 @@ describe('getStaticProps', () => {
         runsData,
         movingTimeData,
         elevationGainData,
+        year,
       },
     });
   });

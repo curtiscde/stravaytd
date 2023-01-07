@@ -49,38 +49,39 @@ interface HomeProps {
   runsData: any;
   movingTimeData: any;
   elevationGainData: any;
+  year: number;
 }
 
 // eslint-disable-next-line react/function-component-definition
 const Home: NextPage<HomeProps> = ({
-  distanceData, runsData, movingTimeData, elevationGainData,
+  distanceData, runsData, movingTimeData, elevationGainData, year,
 }: HomeProps) => {
   const sections: Section[] = [
     {
       anchor: 'distance',
       title: '🏃‍♂️ Total Distance',
-      subtitle: 'Total distance since the start of 2022',
+      subtitle: `Total distance since the start of ${year}`,
       data: distanceData,
       formatType: 'km',
     },
     {
       anchor: 'runs',
       title: '💯 Total Runs',
-      subtitle: 'Total runs since the start of 2022',
+      subtitle: `Total runs since the start of ${year}`,
       data: runsData,
       formatType: 'runs',
     },
     {
       anchor: 'time',
       title: '⏱ Total Moving Time',
-      subtitle: 'Total moving time since the start of 2022',
+      subtitle: `Total moving time since the start of ${year}`,
       data: movingTimeData,
       formatType: 'time',
     },
     {
       anchor: 'elevation',
       title: '🏔 Total Elevation Gain',
-      subtitle: 'Total elevation gain since the start of 2022',
+      subtitle: `Total elevation gain since the start of ${year}`,
       data: elevationGainData,
       formatType: 'm',
     },
@@ -89,8 +90,12 @@ const Home: NextPage<HomeProps> = ({
   return (
     <>
       <Head>
-        <title>Strava Year-To-Date Stats 2022</title>
-        <meta name="description" content="Strava Year-To-Date Stats 2022" />
+        <title>
+          Strava Year-To-Date Stats
+          {' '}
+          {year}
+        </title>
+        <meta name="description" content={`Strava Year-To-Date Stats ${year}`} />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏃‍♂️</text></svg>" />
       </Head>
       <Header />
@@ -104,15 +109,17 @@ export default Home;
 
 export async function getStaticProps() {
   const allowedAthletes = process.env.ALLOWED_ATHLETES || '';
+  const year = 2023;
   const {
     distanceData, runsData, movingTimeData, elevationGainData,
-  } = getStats({ allowedAthletes });
+  } = getStats({ allowedAthletes, year });
   return {
     props: {
       distanceData,
       runsData,
       movingTimeData,
       elevationGainData,
+      year,
     },
   };
 }
