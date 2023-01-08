@@ -37,7 +37,13 @@ describe('updateCurrentYtd', () => {
   });
 
   describe('ytd has changed', () => {
+    const mockDate = new Date('2023-01-01');
+
     beforeAll(async () => {
+      jest
+        .useFakeTimers()
+        .setSystemTime(mockDate);
+
       mockGetAthleteCurrentYtd.mockReturnValueOnce({
         athleteId,
         count: 10,
@@ -56,7 +62,10 @@ describe('updateCurrentYtd', () => {
     it('writes file', () => {
       expect(fsp.writeFile).toHaveBeenCalledWith(
         '../data/current-ytd/athlete12345.json',
-        JSON.stringify(newYtd),
+        JSON.stringify({
+          ...newYtd,
+          lastUpdated: mockDate.getTime(),
+        }),
       );
     });
 
