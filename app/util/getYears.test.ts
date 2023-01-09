@@ -1,4 +1,4 @@
-import { getYears } from "./getYears";
+import { getYears } from './getYears';
 
 const convertToTimestamp = (date: string) => new Date(date).getTime();
 

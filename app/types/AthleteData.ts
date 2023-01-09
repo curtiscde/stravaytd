@@ -10,4 +10,3 @@ export interface AthleteData {
   athleteId: number;
   ytd: Ytd[];
 }
-
