@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Home, { getStaticProps } from '../../pages/index';
+import Home, { getStaticProps } from '../../../pages/year/[year]';
 
 const distanceData = 1;
 const runsData = 2;
@@ -8,7 +8,7 @@ const movingTimeData = 3;
 const elevationGainData = 4;
 const year = 2023;
 
-jest.mock('../../util/getStats', () => ({
+jest.mock('../../../util/getStats', () => ({
   getStats: () => ({
     distanceData,
     runsData,
@@ -18,7 +18,7 @@ jest.mock('../../util/getStats', () => ({
 }));
 
 // eslint-disable-next-line react/function-component-definition
-jest.mock('../../components/YtdChart', () => () => <div>ytdchart</div>);
+jest.mock('../../../components/YtdChart', () => () => <div>ytdchart</div>);
 
 describe('Home', () => {
   let container: any;
@@ -67,13 +67,15 @@ describe('Home', () => {
 
 describe('getStaticProps', () => {
   it('returns props', async () => {
-    expect(await getStaticProps()).toEqual({
+    expect(await getStaticProps({
+      params: { year: year.toString() },
+    })).toEqual({
       props: {
         distanceData,
         runsData,
         movingTimeData,
         elevationGainData,
-        year,
+        year: year.toString(),
       },
     });
   });
