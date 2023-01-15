@@ -3,48 +3,12 @@ import fs from 'fs';
 import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Heading from '../../components/Heading';
-import YtdChart from '../../components/YtdChart';
 import { getStats } from '../../util/getStats';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import { formatTooltip } from '../../util/formatTooltip';
-import { FormatType } from '../../types/FormatType';
 import { getYears } from '../../util/getYears';
-
-interface Section {
-  anchor: string;
-  title: string;
-  subtitle: string;
-  data: any;
-  formatType: FormatType;
-}
-
-interface SectionsProps {
-  sections: Array<Section>;
-}
-
-function Sections({ sections }: SectionsProps) {
-  return (
-    <>
-      {sections.map(({
-        anchor, title, subtitle, data, formatType,
-      }) => (
-        <div key={anchor}>
-          <a id={anchor} />
-          <Heading
-            title={title}
-            subtitle={subtitle}
-          />
-          <YtdChart
-            data={data}
-            formatTooltip={(y: any) => formatTooltip(y, formatType)}
-          />
-        </div>
-      ))}
-    </>
-  );
-}
+import { Section } from '../../types/Section';
+import { Sections } from '../../components/Sections';
 
 interface HomeProps {
   distanceData: any;
