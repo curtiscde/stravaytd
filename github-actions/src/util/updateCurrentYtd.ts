@@ -13,12 +13,7 @@ const ytdHasUpdates = (currentYtd: IAthleteYtd, newYtd: IAthleteYtd): boolean =>
   return false;
 };
 
-interface CurrentYtdData {
-  athleteId: number;
-  count: number
-  distance: number
-  movingTime: number
-  elevationGain: number
+interface CurrentYtdData extends IAthleteYtd {
   lastUpdated: number
 }
 
