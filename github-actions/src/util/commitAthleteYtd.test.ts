@@ -18,17 +18,24 @@ jest.mock('simple-git', () => ({
 }));
 
 describe('commitAthleteYtd', () => {
+  const mockDate = new Date('2023-01-01');
+
   beforeAll(async () => {
+    jest
+      .useFakeTimers()
+      .setSystemTime(mockDate);
+
     await commitAthleteYtd({
       athleteId: 12345,
       distance: 5000,
       movingTime: 566,
       elevationGain: 500,
       count: 2,
+      lastUpdated: mockDate.getTime(),
     });
   });
 
   it('commits', () => {
-    expect(core.info).toHaveBeenCalledWith('new athlete ytd committed: \'🏃 Athlete ytd 12345 (r2)\'');
+    expect(core.info).toHaveBeenCalledWith('new athlete ytd committed: \'🏃 Athlete ytd 12345 (y2023 / r2)\'');
   });
 });

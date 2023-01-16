@@ -4,4 +4,5 @@ export interface IAthleteYtd {
   distance: number;
   movingTime: number;
   elevationGain: number;
+  lastUpdated?: number;
 }
