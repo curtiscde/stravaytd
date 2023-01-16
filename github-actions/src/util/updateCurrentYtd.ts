@@ -13,6 +13,25 @@ const ytdHasUpdates = (currentYtd: IAthleteYtd, newYtd: IAthleteYtd): boolean =>
   return false;
 };
 
+interface CurrentYtdData {
+  athleteId: number;
+  count: number
+  distance: number
+  movingTime: number
+  elevationGain: number
+  lastUpdated: number
+}
+
+interface WriteYtdFileProps {
+  path: string;
+  data: CurrentYtdData;
+}
+
+const writeYtdFile = async ({ path, data }: WriteYtdFileProps) => {
+  if (!fs.existsSync(path)) fs.mkdirSync(path);
+  await fsp.writeFile(`${path}/athlete${data.athleteId}.json`, JSON.stringify(data));
+};
+
 export const updateCurrentYtd = async () => {
   const athleteId = Number(process.env.npm_config_athleteid);
   const count = Number(process.env.npm_config_count);
@@ -25,13 +44,16 @@ export const updateCurrentYtd = async () => {
   };
 
   const currentYtdPath = '../data/current-ytd';
+  const currentYtdPathApp = '../app/data/current-ytd';
   const currentAthleteYtd = getAthleteCurrentYtd(currentYtdPath, athleteId);
 
   if (!currentAthleteYtd || ytdHasUpdates(currentAthleteYtd, newYtd)) {
-    if (!fs.existsSync(currentYtdPath)) fs.mkdirSync(currentYtdPath);
-    await fsp.writeFile(`${currentYtdPath}/athlete${athleteId}.json`, JSON.stringify({
+    const data: CurrentYtdData = {
       athleteId, count, distance, movingTime, elevationGain, lastUpdated: new Date().getTime(),
-    }));
+    };
+
+    await writeYtdFile({ path: currentYtdPath, data });
+    await writeYtdFile({ path: currentYtdPathApp, data });
 
     await commitAthleteYtd(newYtd);
   } else {
