@@ -3,8 +3,14 @@ import simpleGit, { SimpleGit, CleanOptions } from 'simple-git';
 import * as core from '@actions/core';
 import { IAthleteYtd } from '../types/IAthleteYtd';
 
+const generateCommitMessage = (athleteYtd: IAthleteYtd) => {
+  const { athleteId, lastUpdated, count } = athleteYtd;
+  const year = new Date(lastUpdated).getFullYear();
+  return `🏃 Athlete ytd ${athleteId} (y${year} / r${count})`;
+};
+
 export const commitAthleteYtd = async (athleteYtd: IAthleteYtd) => {
-  const commitMessage = `🏃 Athlete ytd ${athleteYtd.athleteId} (r${athleteYtd.count})`;
+  const commitMessage = generateCommitMessage(athleteYtd);
 
   const git: SimpleGit = simpleGit().clean(CleanOptions.FORCE);
 

@@ -3,6 +3,7 @@ import * as core from '@actions/core';
 import { updateCurrentYtd } from './updateCurrentYtd';
 import { commitAthleteYtd } from './commitAthleteYtd';
 import { getAthleteCurrentYtd } from './getAthleteCurrentYtd';
+import { IAthleteYtd } from '../types/IAthleteYtd';
 
 jest.mock('fs', () => ({ existsSync: () => true }));
 jest.mock('fs/promises', () => ({ writeFile: jest.fn() }));
@@ -17,6 +18,7 @@ describe('updateCurrentYtd', () => {
   const mockGetAthleteCurrentYtd = getAthleteCurrentYtd as jest.MockedFunction<
     typeof getAthleteCurrentYtd
   >;
+  const mockDate = new Date('2023-01-01');
 
   const athleteId = 12345;
   const count = 11;
@@ -24,8 +26,8 @@ describe('updateCurrentYtd', () => {
   const movingTime = 13;
   const elevationGain = 14;
 
-  const newYtd = {
-    athleteId, count, distance, movingTime, elevationGain,
+  const newYtd: IAthleteYtd = {
+    athleteId, count, distance, movingTime, elevationGain, lastUpdated: mockDate.getTime(),
   };
 
   beforeAll(() => {
@@ -34,16 +36,14 @@ describe('updateCurrentYtd', () => {
     process.env.npm_config_distance = distance.toString();
     process.env.npm_config_movingtime = movingTime.toString();
     process.env.npm_config_elevationgain = elevationGain.toString();
+
+    jest
+      .useFakeTimers()
+      .setSystemTime(mockDate);
   });
 
   describe('ytd has changed', () => {
-    const mockDate = new Date('2023-01-01');
-
     beforeAll(async () => {
-      jest
-        .useFakeTimers()
-        .setSystemTime(mockDate);
-
       mockGetAthleteCurrentYtd.mockReturnValueOnce({
         athleteId,
         count: 10,
@@ -82,6 +82,7 @@ describe('updateCurrentYtd', () => {
         distance,
         movingTime,
         elevationGain,
+        lastUpdated: mockDate.getTime(),
       });
 
       await updateCurrentYtd();

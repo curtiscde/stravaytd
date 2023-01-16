@@ -13,13 +13,9 @@ const ytdHasUpdates = (currentYtd: IAthleteYtd, newYtd: IAthleteYtd): boolean =>
   return false;
 };
 
-interface CurrentYtdData extends IAthleteYtd {
-  lastUpdated: number
-}
-
 interface WriteYtdFileProps {
   path: string;
-  data: CurrentYtdData;
+  data: IAthleteYtd;
 }
 
 const writeYtdFile = async ({ path, data }: WriteYtdFileProps) => {
@@ -35,7 +31,7 @@ export const updateCurrentYtd = async () => {
   const elevationGain = Number(process.env.npm_config_elevationgain);
 
   const newYtd: IAthleteYtd = {
-    athleteId, count, distance, movingTime, elevationGain,
+    athleteId, count, distance, movingTime, elevationGain, lastUpdated: new Date().getTime(),
   };
 
   const currentYtdPath = '../data/current-ytd';
@@ -43,12 +39,8 @@ export const updateCurrentYtd = async () => {
   const currentAthleteYtd = getAthleteCurrentYtd(currentYtdPath, athleteId);
 
   if (!currentAthleteYtd || ytdHasUpdates(currentAthleteYtd, newYtd)) {
-    const data: CurrentYtdData = {
-      athleteId, count, distance, movingTime, elevationGain, lastUpdated: new Date().getTime(),
-    };
-
-    await writeYtdFile({ path: currentYtdPath, data });
-    await writeYtdFile({ path: currentYtdPathApp, data });
+    await writeYtdFile({ path: currentYtdPath, data: newYtd });
+    await writeYtdFile({ path: currentYtdPathApp, data: newYtd });
 
     await commitAthleteYtd(newYtd);
   } else {
