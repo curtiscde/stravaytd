@@ -35,12 +35,10 @@ export const updateCurrentYtd = async () => {
   };
 
   const currentYtdPath = '../data/current-ytd';
-  const currentYtdPathApp = '../app/data/current-ytd';
   const currentAthleteYtd = getAthleteCurrentYtd(currentYtdPath, athleteId);
 
   if (!currentAthleteYtd || ytdHasUpdates(currentAthleteYtd, newYtd)) {
     await writeYtdFile({ path: currentYtdPath, data: newYtd });
-    await writeYtdFile({ path: currentYtdPathApp, data: newYtd });
 
     await commitAthleteYtd(newYtd);
   } else {
