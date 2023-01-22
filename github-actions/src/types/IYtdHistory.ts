@@ -1,10 +1,4 @@
-interface IYtd {
-  date: number;
-  count: number;
-  distance: number;
-  elevationGain: number;
-  movingTime: number;
-}
+import { IYtd } from './IYtd';
 
 interface IAthlete {
   athleteId: number,

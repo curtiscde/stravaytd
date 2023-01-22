@@ -30,8 +30,10 @@ export const updateCurrentYtd = async () => {
   const movingTime = Number(process.env.npm_config_movingtime);
   const elevationGain = Number(process.env.npm_config_elevationgain);
 
+  const now = new Date().getTime();
+
   const newYtd: IAthleteYtd = {
-    athleteId, count, distance, movingTime, elevationGain, lastUpdated: new Date().getTime(),
+    athleteId, count, distance, movingTime, elevationGain, lastUpdated: now,
   };
 
   const currentYtdPath = '../data/current-ytd';
