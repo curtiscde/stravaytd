@@ -1,10 +1,4 @@
-interface IYtd {
-  date: number;
-  count: number;
-  distance: number;
-  elevationGain: number;
-  movingTime: number;
-}
+import { IYtd } from './IYtd';
 
 interface IAthlete {
   athleteId: number,
@@ -14,6 +8,7 @@ interface IAthlete {
 export interface IYtdHistory {
   meta: {
     version: number;
+    minorVersion?: number;
     lastUpdated: number;
   },
   athletes: Array<IAthlete>;

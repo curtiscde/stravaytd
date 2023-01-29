@@ -12,6 +12,9 @@ jest.mock('./commitAthleteYtd', () => ({
   commitAthleteYtd: jest.fn(),
 }));
 jest.mock('./getAthleteCurrentYtd');
+jest.mock('./updateYtdRealTime', () => ({
+  updateYtdRealTime: jest.fn(),
+}));
 
 describe('updateCurrentYtd', () => {
   const mockWriteFile = fsp.writeFile as jest.MockedFunction<typeof fsp.writeFile>;

@@ -4,6 +4,7 @@ import * as core from '@actions/core';
 import { IAthleteYtd } from '../types/IAthleteYtd';
 import { commitAthleteYtd } from './commitAthleteYtd';
 import { getAthleteCurrentYtd } from './getAthleteCurrentYtd';
+import { updateYtdRealTime } from './updateYtdRealTime';
 
 const ytdHasUpdates = (currentYtd: IAthleteYtd, newYtd: IAthleteYtd): boolean => {
   if (currentYtd.count !== newYtd.count) return true;
@@ -18,7 +19,7 @@ interface WriteYtdFileProps {
   data: IAthleteYtd;
 }
 
-const writeYtdFile = async ({ path, data }: WriteYtdFileProps) => {
+const writeCurrentYtdFile = async ({ path, data }: WriteYtdFileProps) => {
   if (!fs.existsSync(path)) fs.mkdirSync(path);
   await fsp.writeFile(`${path}/athlete${data.athleteId}.json`, JSON.stringify(data));
 };
@@ -29,18 +30,24 @@ export const updateCurrentYtd = async () => {
   const distance = Number(process.env.npm_config_distance);
   const movingTime = Number(process.env.npm_config_movingtime);
   const elevationGain = Number(process.env.npm_config_elevationgain);
+  const noCommit = Number(process.env.npm_config_nocommit) === 1;
+
+  const now = new Date().getTime();
 
   const newYtd: IAthleteYtd = {
-    athleteId, count, distance, movingTime, elevationGain, lastUpdated: new Date().getTime(),
+    athleteId, count, distance, movingTime, elevationGain, lastUpdated: now,
   };
 
   const currentYtdPath = '../data/current-ytd';
   const currentAthleteYtd = getAthleteCurrentYtd(currentYtdPath, athleteId);
 
   if (!currentAthleteYtd || ytdHasUpdates(currentAthleteYtd, newYtd)) {
-    await writeYtdFile({ path: currentYtdPath, data: newYtd });
+    await writeCurrentYtdFile({ path: currentYtdPath, data: newYtd });
+    await updateYtdRealTime({ now });
 
-    await commitAthleteYtd(newYtd);
+    if (!noCommit) {
+      await commitAthleteYtd(newYtd);
+    }
   } else {
     core.info(`no ytd updates for athlete ${newYtd.athleteId}`);
   }
