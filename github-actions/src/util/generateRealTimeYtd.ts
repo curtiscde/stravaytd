@@ -3,8 +3,9 @@ import { IYtd } from '../types/IYtd';
 import { IYtdHistory } from '../types/IYtdHistory';
 
 const getNewAthleteYtdHistory = (athleteYtds: IYtd[], currentYtd: IAthleteYtd) => {
-  const alreadyExists = athleteYtds.find((ytd) => ytd.date === currentYtd.lastUpdated);
-  if (alreadyExists !== undefined) {
+  const latestYtdDate = Math.max(...athleteYtds.map((ytd) => ytd.date));
+
+  if (latestYtdDate >= currentYtd.lastUpdated) {
     return athleteYtds;
   }
 

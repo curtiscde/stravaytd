@@ -30,6 +30,7 @@ export const updateCurrentYtd = async () => {
   const distance = Number(process.env.npm_config_distance);
   const movingTime = Number(process.env.npm_config_movingtime);
   const elevationGain = Number(process.env.npm_config_elevationgain);
+  const noCommit = Number(process.env.npm_config_nocommit) === 1;
 
   const now = new Date().getTime();
 
@@ -44,7 +45,9 @@ export const updateCurrentYtd = async () => {
     await writeCurrentYtdFile({ path: currentYtdPath, data: newYtd });
     await updateYtdRealTime();
 
-    await commitAthleteYtd(newYtd);
+    if (!noCommit) {
+      await commitAthleteYtd(newYtd);
+    }
   } else {
     core.info(`no ytd updates for athlete ${newYtd.athleteId}`);
   }
