@@ -24,8 +24,14 @@ interface GenerateRealTimeYtdProps {
 }
 
 export const generateRealTimeYtd = ({ ytd, currentYtds }: GenerateRealTimeYtdProps) => {
+  const updatedMeta = {
+    ...ytd.meta,
+    minorVersion: (ytd.meta.minorVersion ?? 0) + 1
+  }
+
+
   const realTimeYtd: IYtdHistory = {
-    meta: { ...ytd.meta },
+    meta: updatedMeta,
     athletes: ytd.athletes.map((athlete) => {
       const athleteCurrentYtd = currentYtds.find((a) => a.athleteId === athlete.athleteId);
 

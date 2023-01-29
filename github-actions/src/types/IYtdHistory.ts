@@ -8,6 +8,7 @@ interface IAthlete {
 export interface IYtdHistory {
   meta: {
     version: number;
+    minorVersion?: number;
     lastUpdated: number;
   },
   athletes: Array<IAthlete>;
