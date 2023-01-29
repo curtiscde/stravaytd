@@ -6,7 +6,6 @@ const convertToTimestamp = (date: string) => new Date(date).getTime();
 const meta = {
   version: 1,
   lastUpdated: convertToTimestamp('2023-01-01'),
-
 };
 
 describe('generateRealTimeYtd', () => {
@@ -14,7 +13,7 @@ describe('generateRealTimeYtd', () => {
     const ytd: IYtdHistory = {
       meta,
       athletes: [{
-        athleteId: 12345,
+        athleteId: 1,
         ytd: [{
           distance: 4000,
           movingTime: 466,
@@ -25,7 +24,7 @@ describe('generateRealTimeYtd', () => {
       }],
     };
     const athletesCurrentYtd: IAthleteYtd[] = [{
-      athleteId: 12345,
+      athleteId: 1,
       distance: 5000,
       movingTime: 566,
       elevationGain: 500,
@@ -35,7 +34,7 @@ describe('generateRealTimeYtd', () => {
     expect(generateRealTimeYtd(ytd, athletesCurrentYtd)).toEqual({
       meta: { version: 1, lastUpdated: convertToTimestamp('2023-01-01') },
       athletes: [{
-        athleteId: 12345,
+        athleteId: 1,
         ytd: [{
           distance: 4000,
           movingTime: 466,

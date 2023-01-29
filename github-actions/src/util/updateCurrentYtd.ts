@@ -4,6 +4,7 @@ import * as core from '@actions/core';
 import { IAthleteYtd } from '../types/IAthleteYtd';
 import { commitAthleteYtd } from './commitAthleteYtd';
 import { getAthleteCurrentYtd } from './getAthleteCurrentYtd';
+import { updateYtdRealTime } from './updateYtdRealTime';
 
 const ytdHasUpdates = (currentYtd: IAthleteYtd, newYtd: IAthleteYtd): boolean => {
   if (currentYtd.count !== newYtd.count) return true;
@@ -18,7 +19,7 @@ interface WriteYtdFileProps {
   data: IAthleteYtd;
 }
 
-const writeYtdFile = async ({ path, data }: WriteYtdFileProps) => {
+const writeCurrentYtdFile = async ({ path, data }: WriteYtdFileProps) => {
   if (!fs.existsSync(path)) fs.mkdirSync(path);
   await fsp.writeFile(`${path}/athlete${data.athleteId}.json`, JSON.stringify(data));
 };
@@ -40,7 +41,8 @@ export const updateCurrentYtd = async () => {
   const currentAthleteYtd = getAthleteCurrentYtd(currentYtdPath, athleteId);
 
   if (!currentAthleteYtd || ytdHasUpdates(currentAthleteYtd, newYtd)) {
-    await writeYtdFile({ path: currentYtdPath, data: newYtd });
+    await writeCurrentYtdFile({ path: currentYtdPath, data: newYtd });
+    await updateYtdRealTime();
 
     await commitAthleteYtd(newYtd);
   } else {
