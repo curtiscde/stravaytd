@@ -1,4 +1,5 @@
 import * as fsp from 'fs/promises';
+import { addFinalDateToYtdHistory } from './addFinalDateToYtdHistory';
 import { generateRealTimeYtd } from './generateRealTimeYtd';
 import { getAthletesCurrentYtd } from './getAthletesCurrentYtd';
 import { getYtdHistory } from './getYtdHistory';
@@ -10,7 +11,8 @@ export const updateYtdRealTime = async ({ now }: { now:number }) => {
   const ytd = getYtdHistory(ytdFileLocationApp);
   const currentYtds = getAthletesCurrentYtd(currentYtdPath);
 
-  const realTimeYtd = generateRealTimeYtd({ ytd, currentYtds, now });
+  let realTimeYtd = generateRealTimeYtd({ ytd, currentYtds, now });
+  realTimeYtd = addFinalDateToYtdHistory({ ytdHistory: realTimeYtd });
 
   await fsp.writeFile(ytdFileLocationApp, JSON.stringify(realTimeYtd));
 };

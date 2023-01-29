@@ -24,7 +24,9 @@ interface GenerateRealTimeYtdProps {
   now: number;
 }
 
-export const generateRealTimeYtd = ({ ytd, currentYtds, now }: GenerateRealTimeYtdProps) => {
+export const generateRealTimeYtd = ({
+  ytd, currentYtds, now,
+}: GenerateRealTimeYtdProps): IYtdHistory => {
   const updatedMeta = {
     ...ytd.meta,
     lastUpdated: now,
