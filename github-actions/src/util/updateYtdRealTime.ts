@@ -6,11 +6,11 @@ import { getYtdHistory } from './getYtdHistory';
 const ytdFileLocationApp = '../app/data/ytdHistory.json';
 const currentYtdPath = '../data/current-ytd';
 
-export const updateYtdRealTime = async () => {
+export const updateYtdRealTime = async ({ now }: { now:number }) => {
   const ytd = getYtdHistory(ytdFileLocationApp);
-  const athletesYtd = getAthletesCurrentYtd(currentYtdPath);
+  const currentYtds = getAthletesCurrentYtd(currentYtdPath);
 
-  const realTimeYtd = generateRealTimeYtd(ytd, athletesYtd);
+  const realTimeYtd = generateRealTimeYtd({ ytd, currentYtds, now });
 
   await fsp.writeFile(ytdFileLocationApp, JSON.stringify(realTimeYtd));
 };

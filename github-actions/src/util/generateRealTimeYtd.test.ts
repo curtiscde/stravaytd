@@ -3,6 +3,8 @@ import { IYtdHistory } from '../types/IYtdHistory';
 import { generateRealTimeYtd } from './generateRealTimeYtd';
 
 const convertToTimestamp = (date: string) => new Date(date).getTime();
+const now = convertToTimestamp('2023-02-02');
+
 const meta = {
   version: 1,
   lastUpdated: convertToTimestamp('2023-01-01'),
@@ -10,8 +12,9 @@ const meta = {
 
 const metaUpdated = {
   ...meta,
+  lastUpdated: now,
   minorVersion: 1,
-}
+};
 
 const currentAthleteYtdA = {
   athleteId: 1,
@@ -49,7 +52,7 @@ describe('generateRealTimeYtd', () => {
       count: 2,
       lastUpdated: convertToTimestamp('2023-01-02'),
     }];
-    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds, now })).toEqual({
       meta: metaUpdated,
       athletes: [{
         ...currentAthleteYtdA,
@@ -79,7 +82,7 @@ describe('generateRealTimeYtd', () => {
       count: currentAthleteYtdA.ytd[0].count,
       lastUpdated: currentAthleteYtdA.ytd[0].date,
     }];
-    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds, now })).toEqual({
       meta: metaUpdated,
       athletes: [
         {
@@ -115,7 +118,7 @@ describe('generateRealTimeYtd', () => {
         lastUpdated: convertToTimestamp('2023-01-02'),
       },
     ];
-    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds, now })).toEqual({
       meta: metaUpdated,
       athletes: [
         {
@@ -169,7 +172,7 @@ describe('generateRealTimeYtd', () => {
         lastUpdated: convertToTimestamp('2023-01-01'),
       },
     ];
-    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds, now })).toEqual({
       meta: metaUpdated,
       athletes: [
         {
@@ -217,7 +220,7 @@ describe('generateRealTimeYtd', () => {
         lastUpdated: convertToTimestamp('2023-01-01'),
       },
     ];
-    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds, now })).toEqual({
       meta: metaUpdated,
       athletes: [
         {

@@ -21,14 +21,15 @@ const getNewAthleteYtdHistory = (athleteYtds: IYtd[], currentYtd: IAthleteYtd) =
 interface GenerateRealTimeYtdProps {
   ytd: IYtdHistory
   currentYtds: IAthleteYtd[]
+  now: number;
 }
 
-export const generateRealTimeYtd = ({ ytd, currentYtds }: GenerateRealTimeYtdProps) => {
+export const generateRealTimeYtd = ({ ytd, currentYtds, now }: GenerateRealTimeYtdProps) => {
   const updatedMeta = {
     ...ytd.meta,
-    minorVersion: (ytd.meta.minorVersion ?? 0) + 1
-  }
-
+    lastUpdated: now,
+    minorVersion: (ytd.meta.minorVersion ?? 0) + 1,
+  };
 
   const realTimeYtd: IYtdHistory = {
     meta: updatedMeta,

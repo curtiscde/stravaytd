@@ -43,7 +43,7 @@ export const updateCurrentYtd = async () => {
 
   if (!currentAthleteYtd || ytdHasUpdates(currentAthleteYtd, newYtd)) {
     await writeCurrentYtdFile({ path: currentYtdPath, data: newYtd });
-    await updateYtdRealTime();
+    await updateYtdRealTime({ now });
 
     if (!noCommit) {
       await commitAthleteYtd(newYtd);
