@@ -36,7 +36,7 @@ describe('generateRealTimeYtd', () => {
       meta,
       athletes: [currentAthleteYtdA],
     };
-    const athletesCurrentYtd: IAthleteYtd[] = [{
+    const currentYtds: IAthleteYtd[] = [{
       athleteId: currentAthleteYtdA.athleteId,
       distance: 5000,
       movingTime: 566,
@@ -44,7 +44,7 @@ describe('generateRealTimeYtd', () => {
       count: 2,
       lastUpdated: convertToTimestamp('2023-01-02'),
     }];
-    expect(generateRealTimeYtd(ytd, athletesCurrentYtd)).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
       meta,
       athletes: [{
         ...currentAthleteYtdA,
@@ -66,7 +66,7 @@ describe('generateRealTimeYtd', () => {
       meta,
       athletes: [currentAthleteYtdA],
     };
-    const athletesCurrentYtd: IAthleteYtd[] = [{
+    const currentYtds: IAthleteYtd[] = [{
       athleteId: currentAthleteYtdA.athleteId,
       distance: currentAthleteYtdA.ytd[0].distance,
       elevationGain: currentAthleteYtdA.ytd[0].elevationGain,
@@ -74,7 +74,7 @@ describe('generateRealTimeYtd', () => {
       count: currentAthleteYtdA.ytd[0].count,
       lastUpdated: currentAthleteYtdA.ytd[0].date,
     }];
-    expect(generateRealTimeYtd(ytd, athletesCurrentYtd)).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
       meta,
       athletes: [
         {
@@ -92,7 +92,7 @@ describe('generateRealTimeYtd', () => {
       meta,
       athletes: [currentAthleteYtdA, currentAthleteYtdB],
     };
-    const athletesCurrentYtd: IAthleteYtd[] = [
+    const currentYtds: IAthleteYtd[] = [
       {
         athleteId: currentAthleteYtdA.athleteId,
         distance: currentAthleteYtdA.ytd[0].distance + 1,
@@ -110,7 +110,7 @@ describe('generateRealTimeYtd', () => {
         lastUpdated: convertToTimestamp('2023-01-02'),
       },
     ];
-    expect(generateRealTimeYtd(ytd, athletesCurrentYtd)).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
       meta,
       athletes: [
         {
@@ -146,7 +146,7 @@ describe('generateRealTimeYtd', () => {
       meta,
       athletes: [currentAthleteYtdA, currentAthleteYtdB],
     };
-    const athletesCurrentYtd: IAthleteYtd[] = [
+    const currentYtds: IAthleteYtd[] = [
       {
         athleteId: currentAthleteYtdA.athleteId,
         distance: currentAthleteYtdA.ytd[0].distance + 1,
@@ -164,7 +164,7 @@ describe('generateRealTimeYtd', () => {
         lastUpdated: convertToTimestamp('2023-01-01'),
       },
     ];
-    expect(generateRealTimeYtd(ytd, athletesCurrentYtd)).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
       meta,
       athletes: [
         {
@@ -194,7 +194,7 @@ describe('generateRealTimeYtd', () => {
       meta,
       athletes: [currentAthleteYtdA, currentAthleteYtdB],
     };
-    const athletesCurrentYtd: IAthleteYtd[] = [
+    const currentYtds: IAthleteYtd[] = [
       {
         athleteId: currentAthleteYtdA.athleteId,
         distance: currentAthleteYtdA.ytd[0].distance,
@@ -212,7 +212,7 @@ describe('generateRealTimeYtd', () => {
         lastUpdated: convertToTimestamp('2023-01-01'),
       },
     ];
-    expect(generateRealTimeYtd(ytd, athletesCurrentYtd)).toEqual({
+    expect(generateRealTimeYtd({ ytd, currentYtds })).toEqual({
       meta,
       athletes: [
         {

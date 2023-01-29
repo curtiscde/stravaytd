@@ -18,7 +18,12 @@ const getNewAthleteYtdHistory = (athleteYtds: IYtd[], currentYtd: IAthleteYtd) =
   }]);
 };
 
-export const generateRealTimeYtd = (ytd: IYtdHistory, currentYtds: IAthleteYtd[]) => {
+interface GenerateRealTimeYtdProps {
+  ytd: IYtdHistory
+  currentYtds: IAthleteYtd[]
+}
+
+export const generateRealTimeYtd = ({ ytd, currentYtds }: GenerateRealTimeYtdProps) => {
   const realTimeYtd: IYtdHistory = {
     meta: { ...ytd.meta },
     athletes: ytd.athletes.map((athlete) => {
