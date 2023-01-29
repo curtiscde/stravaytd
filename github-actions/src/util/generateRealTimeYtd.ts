@@ -4,8 +4,7 @@ import { IYtdHistory } from '../types/IYtdHistory';
 
 const getNewAthleteYtdHistory = (athleteYtds: IYtd[], currentYtd: IAthleteYtd) => {
   const alreadyExists = athleteYtds.find((ytd) => ytd.date === currentYtd.lastUpdated);
-
-  if (alreadyExists) {
+  if (alreadyExists !== undefined) {
     return athleteYtds;
   }
 
