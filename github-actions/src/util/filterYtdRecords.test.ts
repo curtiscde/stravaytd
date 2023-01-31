@@ -8,7 +8,7 @@ const ytdA: IYtd = {
   distance: 1,
   elevationGain: 1,
   movingTime: 1,
-  date: convertToTimestamp('2023-01-01')
+  date: convertToTimestamp('2023-01-01'),
 };
 
 const ytdB: IYtd = {
@@ -16,7 +16,7 @@ const ytdB: IYtd = {
   distance: 2,
   elevationGain: 2,
   movingTime: 2,
-  date: convertToTimestamp('2023-01-01')
+  date: convertToTimestamp('2023-01-01'),
 };
 
 describe('filterYtdRecords', () => {
