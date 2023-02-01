@@ -7,7 +7,8 @@
     "test:ci": "jest --ci --collectCoverage",
     "update-ytd-history": "node ./build/updateYtdHistory.js",
     "update-current-ytd": "node ./build/updateCurrentYtd.js",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "split-ytd-by-year": "ts-node ./src/splitByYear.ts"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "eslint": "^8.10.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^16.1.0",
-    "jest": "^27.4.7"
+    "jest": "^27.4.7",
+    "ts-node": "^10.9.1"
   }
 }
