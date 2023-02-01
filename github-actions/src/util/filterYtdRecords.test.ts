@@ -40,12 +40,16 @@ describe('filterYtdRecords', () => {
         ytds: [
           { ...ytdA, date: convertToTimestamp('2023-01-01') },
           { ...ytdA, date: convertToTimestamp('2023-01-02') },
-          { ...ytdB, date: convertToTimestamp('2023-01-03') },
+          { ...ytdA, date: convertToTimestamp('2023-01-03') },
+          { ...ytdB, date: convertToTimestamp('2023-01-04') },
+          { ...ytdB, date: convertToTimestamp('2023-01-05') },
         ],
       }),
     ).toEqual([
       { ...ytdA, date: convertToTimestamp('2023-01-01') },
-      { ...ytdB, date: convertToTimestamp('2023-01-03') },
+      { ...ytdA, date: convertToTimestamp('2023-01-03') },
+      { ...ytdB, date: convertToTimestamp('2023-01-04') },
+      { ...ytdB, date: convertToTimestamp('2023-01-05') },
     ]);
   });
 });
