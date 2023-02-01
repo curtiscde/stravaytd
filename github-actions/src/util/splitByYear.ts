@@ -1,6 +1,6 @@
 import * as fsp from 'fs/promises';
 import { IYtdHistory } from '../types/IYtdHistory';
-import { filterYtdRecords } from './FilterYtdRecords';
+import { filterYtdRecords } from './filterYtdRecords';
 import { getYtdHistory } from './getYtdHistory';
 
 const ytdFileLocation = '../data/ytdHistory.json';
