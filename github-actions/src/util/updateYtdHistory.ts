@@ -10,7 +10,7 @@ const currentYtdPath = '../data/current-ytd';
 
 export const updateYtdHistory = async () => {
   const now = (new Date()).getTime();
-  const ytd = getYtdHistory(ytdFileLocationApp);
+  const ytd = getYtdHistory(ytdFileLocation);
   const athletesYtd = getAthletesCurrentYtd(currentYtdPath);
   const newYtd = generateNewYtd(ytd, athletesYtd, now);
 
