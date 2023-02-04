@@ -4,11 +4,12 @@ import { generateRealTimeYtd } from './generateRealTimeYtd';
 import { getAthletesCurrentYtd } from './getAthletesCurrentYtd';
 import { getYtdHistory } from './getYtdHistory';
 
+const ytdFileLocation = '../data/ytdHistory.json';
 const ytdFileLocationApp = '../app/data/ytdHistory.json';
 const currentYtdPath = '../data/current-ytd';
 
 export const updateYtdRealTime = async ({ now }: { now:number }) => {
-  const ytd = getYtdHistory(ytdFileLocationApp);
+  const ytd = getYtdHistory(ytdFileLocation);
   const currentYtds = getAthletesCurrentYtd(currentYtdPath);
 
   let realTimeYtd = generateRealTimeYtd({ ytd, currentYtds, now });
