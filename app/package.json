@@ -1,5 +1,5 @@
 {
-  "name": "strava-ytd-stats-cr",
+  "name": "strava-ytd-app",
   "private": true,
   "scripts": {
     "dev": "next dev",

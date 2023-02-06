@@ -7,12 +7,14 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { Section } from '../types/Section';
 import { Sections } from '../components/Sections';
+import { SectionData } from '../types/SectionData';
+import { addLatestTimeToData } from '../util/addLatestTimeToData';
 
 interface HomeProps {
-  distanceData: any;
-  runsData: any;
-  movingTimeData: any;
-  elevationGainData: any;
+  distanceData: SectionData;
+  runsData: SectionData;
+  movingTimeData: SectionData;
+  elevationGainData: SectionData;
   year: number;
 }
 
@@ -20,33 +22,34 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({
   distanceData, runsData, movingTimeData, elevationGainData, year,
 }: HomeProps) => {
+  const now = new Date().getTime();
   const sections: Section[] = [
     {
       anchor: 'distance',
       title: '🏃‍♂️ Total Distance',
       subtitle: `Total distance since the start of ${year}`,
-      data: distanceData,
+      data: addLatestTimeToData({ sectionData: distanceData, timestamp: now }),
       formatType: 'km',
     },
     {
       anchor: 'runs',
       title: '💯 Total Runs',
       subtitle: `Total runs since the start of ${year}`,
-      data: runsData,
+      data: addLatestTimeToData({ sectionData: runsData, timestamp: now }),
       formatType: 'runs',
     },
     {
       anchor: 'time',
       title: '⏱ Total Moving Time',
       subtitle: `Total moving time since the start of ${year}`,
-      data: movingTimeData,
+      data: addLatestTimeToData({ sectionData: movingTimeData, timestamp: now }),
       formatType: 'time',
     },
     {
       anchor: 'elevation',
       title: '🏔 Total Elevation Gain',
       subtitle: `Total elevation gain since the start of ${year}`,
-      data: elevationGainData,
+      data: addLatestTimeToData({ sectionData: elevationGainData, timestamp: now }),
       formatType: 'm',
     },
   ];

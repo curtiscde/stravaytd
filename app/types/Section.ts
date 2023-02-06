@@ -1,9 +1,10 @@
 import { FormatType } from './FormatType';
+import { SectionData } from './SectionData';
 
 export interface Section {
   anchor: string;
   title: string;
   subtitle: string;
-  data: any;
+  data: SectionData;
   formatType: FormatType;
 }
