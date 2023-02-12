@@ -16,7 +16,7 @@ const getAthleteYtd = ({ ytds, maxDate }: GetAthleteYtdProps) => {
     .reduce((acc, curr) => ((curr > acc) ? curr : acc), 0);
   const latestYtd = ytds.find((ytd) => ytd.date === maxDateForAthlete);
 
-  if (maxDateForAthlete >= maxDate) {
+  if (maxDateForAthlete >= maxDate || latestYtd === undefined) {
     return ytds;
   }
 
