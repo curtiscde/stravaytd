@@ -4,9 +4,9 @@ import { IAthleteYtd } from '../types/IAthleteYtd';
 
 export const getAthletesCurrentYtd = (currentYtdPath: string): IAthleteYtd[] => {
   const files = fs.readdirSync(path.join(currentYtdPath));
-  const athletesYtd = [];
+  const athletesYtd: IAthleteYtd[] = [];
   files.forEach((file) => {
-    const f = JSON.parse(fs.readFileSync(`${currentYtdPath}/${file}`, 'utf8'));
+    const f = JSON.parse(fs.readFileSync(`${currentYtdPath}/${file}`, 'utf8')) as IAthleteYtd;
     athletesYtd.push(f);
   });
   return athletesYtd;
