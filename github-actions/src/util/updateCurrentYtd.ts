@@ -4,7 +4,6 @@ import * as core from '@actions/core';
 import { IAthleteYtd } from '../types/IAthleteYtd';
 import { commitAthleteYtd } from './commitAthleteYtd';
 import { getAthleteCurrentYtd } from './getAthleteCurrentYtd';
-import { updateYtdRealTime } from './updateYtdRealTime';
 
 const ytdHasUpdates = (currentYtd: IAthleteYtd, newYtd: IAthleteYtd): boolean => {
   if (currentYtd.count !== newYtd.count) return true;
@@ -44,7 +43,7 @@ export const updateCurrentYtd = async () => {
   if (!currentAthleteYtd || ytdHasUpdates(currentAthleteYtd, newYtd)) {
     await writeCurrentYtdFile({ path: currentYtdPath, data: newYtd });
     await writeCurrentYtdFile({ path: '../app/data/current-ytd', data: newYtd });
-    await updateYtdRealTime({ now });
+    // await updateYtdRealTime({ now });
 
     if (!noCommit) {
       await commitAthleteYtd(newYtd);
