@@ -14,12 +14,12 @@ const ytdHasUpdates = (currentYtd: IAthleteYtd, newYtd: IAthleteYtd): boolean =>
   return false;
 };
 
-interface WriteYtdFileProps {
+type WriteCurrentYtdFile = (props: {
   path: string;
   data: IAthleteYtd;
-}
+}) => void;
 
-const writeCurrentYtdFile = async ({ path, data }: WriteYtdFileProps) => {
+const writeCurrentYtdFile: WriteCurrentYtdFile = async ({ path, data }) => {
   if (!fs.existsSync(path)) fs.mkdirSync(path);
   await fsp.writeFile(`${path}/athlete${data.athleteId}.json`, JSON.stringify(data));
 };
@@ -43,6 +43,7 @@ export const updateCurrentYtd = async () => {
 
   if (!currentAthleteYtd || ytdHasUpdates(currentAthleteYtd, newYtd)) {
     await writeCurrentYtdFile({ path: currentYtdPath, data: newYtd });
+    await writeCurrentYtdFile({ path: '../app/data/current-ytd', data: newYtd });
     await updateYtdRealTime({ now });
 
     if (!noCommit) {
