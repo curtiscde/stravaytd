@@ -1,4 +1,3 @@
-// import { spawn } from 'child_process';
 import simpleGit, { SimpleGit, CleanOptions } from 'simple-git';
 import * as core from '@actions/core';
 import { IAthleteYtd } from '../types/IAthleteYtd';
@@ -19,7 +18,6 @@ export const commitAthleteYtd = async (athleteYtd: IAthleteYtd) => {
   await git.addConfig('user.name', 'gh action bot');
   await git.add(`../data/current-ytd/athlete${athleteYtd.athleteId}.json`);
   await git.add(`../app/data/current-ytd/athlete${athleteYtd.athleteId}.json`);
-  await git.add('../app/data/ytdHistory.json');
   await git.commit(commitMessage);
   await git.push();
 

@@ -36,6 +36,9 @@ jest.mock('fs', () => ({
     ],
   }),
 }));
+jest.mock('./getAthletesCurrentYtd', () => ({
+  getAthletesCurrentYtd: () => [],
+}));
 
 describe('getStats', () => {
   let stats: any;
