@@ -21,7 +21,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.14",
+    "@types/node": "^18.15.3",
     "babel-jest": "^27.4.6",
     "eslint": "^8.10.0",
     "eslint-config-airbnb": "^19.0.4",
