@@ -68,7 +68,7 @@ exports[`Home renders index page 1`] = `
           <p
             class="max-w-3xl mx-auto mt-4 text-xl text-center dark:text-coolGray-400"
           >
-            Total distance since the start of 2023
+            Total distance since the start of 2024
           </p>
         </div>
       </div>
@@ -96,7 +96,7 @@ exports[`Home renders index page 1`] = `
           <p
             class="max-w-3xl mx-auto mt-4 text-xl text-center dark:text-coolGray-400"
           >
-            Total runs since the start of 2023
+            Total runs since the start of 2024
           </p>
         </div>
       </div>
@@ -124,7 +124,7 @@ exports[`Home renders index page 1`] = `
           <p
             class="max-w-3xl mx-auto mt-4 text-xl text-center dark:text-coolGray-400"
           >
-            Total moving time since the start of 2023
+            Total moving time since the start of 2024
           </p>
         </div>
       </div>
@@ -152,7 +152,7 @@ exports[`Home renders index page 1`] = `
           <p
             class="max-w-3xl mx-auto mt-4 text-xl text-center dark:text-coolGray-400"
           >
-            Total elevation gain since the start of 2023
+            Total elevation gain since the start of 2024
           </p>
         </div>
       </div>
