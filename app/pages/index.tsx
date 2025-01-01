@@ -76,7 +76,7 @@ export default Home;
 
 export async function getStaticProps() {
   const allowedAthletes = process.env.ALLOWED_ATHLETES || '';
-  const year = new Date().getFullYear();
+  const year = 2025
   const {
     distanceData, runsData, movingTimeData, elevationGainData,
   } = getStats({ allowedAthletes, year });
