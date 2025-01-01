@@ -6,7 +6,7 @@ const distanceData = 1;
 const runsData = 2;
 const movingTimeData = 3;
 const elevationGainData = 4;
-const year = 2024;
+const year = 2025;
 
 jest.mock('../../util/getStats', () => ({
   getStats: () => ({
