@@ -14,7 +14,7 @@ jobs:
     - name: Use Node
       uses: actions/setup-node@v2
       with:
-        node-version: '16.x'
+        node-version: '22.x'
     - name: Install node dependencies
       run: npm ci
       working-directory: github-actions
