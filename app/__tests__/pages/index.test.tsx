@@ -20,6 +20,16 @@ jest.mock('../../util/getStats', () => ({
 // eslint-disable-next-line react/function-component-definition
 jest.mock('../../components/YtdChart', () => () => <div>ytdchart</div>);
 
+// Freeze time for tests so Year is stable (mock to 2025)
+beforeAll(() => {
+  jest.useFakeTimers('modern');
+  jest.setSystemTime(new Date('2025-06-01T00:00:00Z'));
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+});
+
 describe('Home', () => {
   let container: any;
 
