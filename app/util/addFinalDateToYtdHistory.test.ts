@@ -1,11 +1,11 @@
-import { IYtdHistory } from '../types/IYtdHistory';
+import { YtdHistory } from '../types/YtdHistory';
 import { addFinalDateToYtdHistory } from './addFinalDateToYtdHistory';
 
 const convertToTimestamp = (date: string) => new Date(date).getTime();
 
 describe('addFinalDateToYtdHistory', () => {
   it('returns ytds', () => {
-    const ytdHistory: IYtdHistory = {
+    const ytdHistory: YtdHistory = {
       meta: { version: 1, lastUpdated: new Date('2020-01-01').getTime() },
       athletes: [
         {

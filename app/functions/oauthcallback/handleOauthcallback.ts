@@ -1,4 +1,4 @@
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 import { dispatchAction } from '../util/dispatchAction';
 import { getAthleteYtd } from '../util/getAthleteYtd';
 import { authoriseUser } from './authoriseUser';
@@ -12,7 +12,7 @@ export const handleOauthcallback = async (event: any) => {
     const { authorised, authData } = await authoriseUser(code);
     if (!authorised) return { statusCode: 401 };
     const { accessToken, athleteId } = authData!;
-    const athleteYtd: IAthleteYtd = await getAthleteYtd({ accessToken, athleteId });
+    const athleteYtd: AthleteYtd = await getAthleteYtd({ accessToken, athleteId });
     await dispatchAction(athleteYtd);
   } catch (e) {
     return { statusCode: 500 };

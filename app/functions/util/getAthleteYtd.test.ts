@@ -1,4 +1,4 @@
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 import { getAthleteYtd } from './getAthleteYtd';
 
 jest.mock('node-fetch', () => {
@@ -16,7 +16,7 @@ jest.mock('node-fetch', () => {
 });
 
 describe('getAthleteYtd', () => {
-  let athleteYtd: IAthleteYtd;
+  let athleteYtd: AthleteYtd;
   beforeAll(async () => {
     athleteYtd = await getAthleteYtd({ accessToken: 'foo', athleteId: 123 });
   });

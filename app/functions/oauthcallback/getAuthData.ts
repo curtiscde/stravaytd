@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
-import { IOAuthTokenResponse } from './IOAuthTokenResponse';
+import { OAuthTokenResponse } from './OAuthTokenResponse';
 
 require('dotenv').config();
 
-export async function getAuthData(code: string): Promise<IOAuthTokenResponse> {
+export async function getAuthData(code: string): Promise<OAuthTokenResponse> {
   return fetch('https://www.strava.com/oauth/token', {
     method: 'POST',
     headers: {

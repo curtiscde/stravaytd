@@ -1,9 +1,9 @@
 import { handleOauthcallback } from './handleOauthcallback';
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 import { authoriseUser } from './authoriseUser';
 import { dispatchAction } from '../util/dispatchAction';
 
-const mockAthleteYtd: IAthleteYtd = {
+const mockAthleteYtd: AthleteYtd = {
   athleteId: 123,
   movingTime: 1,
   distance: 2,

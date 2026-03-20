@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { IYtdHistory } from '../types/IYtdHistory';
+import { YtdHistory } from '../types/YtdHistory';
 import { addFinalDateToYtdHistory } from './addFinalDateToYtdHistory';
 import { filterData } from './filterData';
 import { generateRealTimeYtd } from './generateRealTimeYtd';
@@ -38,7 +38,7 @@ interface GetStats {
 
 export function getStats({ allowedAthletes, year }: GetStats) {
   const ytdHistoryFile = fs.readFileSync('../app/data/ytdHistory.json', 'utf-8');
-  const ytd = JSON.parse(ytdHistoryFile) as IYtdHistory;
+  const ytd = JSON.parse(ytdHistoryFile) as YtdHistory;
   const currentYtds = getAthletesCurrentYtd('./data/current-ytd');
   const now = new Date().getTime();
   let realTimeYtd = generateRealTimeYtd({ ytd, currentYtds, now });
