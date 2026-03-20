@@ -1,5 +1,5 @@
 import { getAuthData } from './getAuthData';
-import { IOAuthTokenResponse } from './IOAuthTokenResponse';
+import { OAuthTokenResponse } from './OAuthTokenResponse';
 
 jest.mock('node-fetch', () => {
   const generateResponse = () => ({
@@ -15,7 +15,7 @@ jest.mock('node-fetch', () => {
 });
 
 describe('getAuthData', () => {
-  let authData: IOAuthTokenResponse;
+  let authData: OAuthTokenResponse;
   beforeAll(async () => {
     authData = await getAuthData('foo');
   });

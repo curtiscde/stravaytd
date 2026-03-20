@@ -1,10 +1,10 @@
 import * as octokitCore from '@octokit/core';
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 import { dispatchAction } from './dispatchAction';
 
 jest.mock('@octokit/core');
 
-const athleteYtd: IAthleteYtd = {
+const athleteYtd: AthleteYtd = {
   athleteId: 1,
   count: 2,
   distance: 3,

@@ -1,9 +1,9 @@
-import { filterData, IAthlete } from './filterData';
+import { filterData, Athlete } from './filterData';
 
 const convertToTimestamp = (date: string) => new Date(date).getTime();
 
 describe('filterData', () => {
-  const athletes: Array<IAthlete> = [
+  const athletes: Array<Athlete> = [
     {
       athleteId: 1,
       ytd: [

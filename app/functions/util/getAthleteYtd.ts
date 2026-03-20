@@ -1,14 +1,14 @@
 import fetch from 'node-fetch';
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 
-interface IGetAthleteYtdProps {
+interface GetAthleteYtdProps {
   accessToken: string;
   athleteId: number;
 }
 
 export async function getAthleteYtd(
-  { accessToken, athleteId }: IGetAthleteYtdProps,
-): Promise<IAthleteYtd> {
+  { accessToken, athleteId }: GetAthleteYtdProps,
+): Promise<AthleteYtd> {
   return fetch(`https://www.strava.com/api/v3/athletes/${athleteId}/stats`, {
     headers: { authorization: `Bearer ${accessToken}` },
   })

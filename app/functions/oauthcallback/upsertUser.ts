@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { db } from '../../firebase/admin';
 import { encrypt } from './encrypt';
-import { IOAuthTokenResponse } from './IOAuthTokenResponse';
+import { OAuthTokenResponse } from './OAuthTokenResponse';
 
 async function deleteExistingUserDocs(id: number) {
   return db
@@ -13,7 +13,7 @@ async function deleteExistingUserDocs(id: number) {
     });
 }
 
-async function addUser(authData: IOAuthTokenResponse) {
+async function addUser(authData: OAuthTokenResponse) {
   return db
     .collection('users')
     .add({
@@ -25,7 +25,7 @@ async function addUser(authData: IOAuthTokenResponse) {
     .catch((e) => { throw new Error(e); });
 }
 
-export async function upsertUser(authData: IOAuthTokenResponse) {
+export async function upsertUser(authData: OAuthTokenResponse) {
   await deleteExistingUserDocs(authData.athlete.id);
   return addUser(authData);
 }

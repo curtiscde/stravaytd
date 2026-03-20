@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import { Octokit } from '@octokit/core';
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 
-function mapAthleteYtdToString(athleteYtd: IAthleteYtd) {
+function mapAthleteYtdToString(athleteYtd: AthleteYtd) {
   const {
     athleteId, count, distance, movingTime, elevationGain,
   } = athleteYtd;
@@ -16,7 +16,7 @@ function mapAthleteYtdToString(athleteYtd: IAthleteYtd) {
   };
 }
 
-export async function dispatchAction(athleteYtd: IAthleteYtd) {
+export async function dispatchAction(athleteYtd: AthleteYtd) {
   const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
 
   await octokit.request(`POST /repos/${process.env.GITHUB_REPO}/actions/workflows/update-current-ytd.yml/dispatches`, {

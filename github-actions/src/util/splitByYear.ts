@@ -1,11 +1,11 @@
 import * as fsp from 'fs/promises';
-import { IYtdHistory } from '../types/IYtdHistory';
+import { YtdHistory } from '../types/YtdHistory';
 import { filterYtdRecords } from './filterYtdRecords';
 import { getYtdHistory } from './getYtdHistory';
 
 const ytdFileLocation = '../data/ytdHistory.json';
 
-const countYtds = (yearYtd: IYtdHistory) => yearYtd.athletes
+const countYtds = (yearYtd: YtdHistory) => yearYtd.athletes
   .map((a) => a.ytd)
   .flat(1)
   .length;
@@ -18,8 +18,8 @@ const getYears = ({ athletes }: { athletes }): number[] => athletes
   )))
   .sort();
 
-const createYtdForYear = async ({ year, ytd }: { year: number, ytd: IYtdHistory }) => {
-  const yearYtd: IYtdHistory = {
+const createYtdForYear = async ({ year, ytd }: { year: number, ytd: YtdHistory }) => {
+  const yearYtd: YtdHistory = {
     ...ytd,
     athletes: ytd.athletes.map((athlete) => ({
       ...athlete,
@@ -29,7 +29,7 @@ const createYtdForYear = async ({ year, ytd }: { year: number, ytd: IYtdHistory 
 
   console.log(`year ${year} records: ${countYtds(yearYtd)}`);
 
-  const yearYtdFiltered: IYtdHistory = {
+  const yearYtdFiltered: YtdHistory = {
     ...yearYtd,
     athletes: yearYtd.athletes.map((athlete) => ({
       ...athlete,

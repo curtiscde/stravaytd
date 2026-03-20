@@ -1,4 +1,4 @@
-import { IYtdHistory } from '../types/IYtdHistory';
+import { YtdHistory } from '../types/YtdHistory';
 
 function generateMeta(ytd, now: number) {
   return {
@@ -39,7 +39,7 @@ function generateAthletes(ytd: any, athletesYtd: any[], now: number) {
   return athletes;
 }
 
-export function generateNewYtd(ytd: any, athletesYtd: any[], now: number): IYtdHistory {
+export function generateNewYtd(ytd: any, athletesYtd: any[], now: number): YtdHistory {
   const newYtd = {
     meta: generateMeta(ytd, now),
     athletes: generateAthletes(ytd, athletesYtd, now),

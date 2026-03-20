@@ -1,11 +1,11 @@
 import * as fs from 'fs';
 import * as fsp from 'fs/promises';
 import * as core from '@actions/core';
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 import { commitAthleteYtd } from './commitAthleteYtd';
 import { getAthleteCurrentYtd } from './getAthleteCurrentYtd';
 
-const ytdHasUpdates = (currentYtd: IAthleteYtd, newYtd: IAthleteYtd): boolean => {
+const ytdHasUpdates = (currentYtd: AthleteYtd, newYtd: AthleteYtd): boolean => {
   if (currentYtd.count !== newYtd.count) return true;
   if (currentYtd.distance !== newYtd.distance) return true;
   if (currentYtd.elevationGain !== newYtd.elevationGain) return true;
@@ -15,7 +15,7 @@ const ytdHasUpdates = (currentYtd: IAthleteYtd, newYtd: IAthleteYtd): boolean =>
 
 type WriteCurrentYtdFile = (props: {
   path: string;
-  data: IAthleteYtd;
+  data: AthleteYtd;
 }) => void;
 
 const writeCurrentYtdFile: WriteCurrentYtdFile = async ({ path, data }) => {
@@ -33,7 +33,7 @@ export const updateCurrentYtd = async () => {
 
   const now = new Date().getTime();
 
-  const newYtd: IAthleteYtd = {
+  const newYtd: AthleteYtd = {
     athleteId, count, distance, movingTime, elevationGain, lastUpdated: now,
   };
 

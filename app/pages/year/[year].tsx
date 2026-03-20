@@ -90,13 +90,13 @@ export async function getStaticPaths() {
   };
 }
 
-interface IGetStaticProps {
+interface GetStaticProps {
   params: {
     year: string;
   }
 }
 
-export async function getStaticProps({ params: { year } }: IGetStaticProps) {
+export async function getStaticProps({ params: { year } }: GetStaticProps) {
   const allowedAthletes = process.env.ALLOWED_ATHLETES || '';
   const {
     distanceData, runsData, movingTimeData, elevationGainData,

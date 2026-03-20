@@ -1,13 +1,13 @@
-import { IYtd } from '../types/IYtd';
-import { IYtdHistory } from '../types/IYtdHistory';
+import { Ytd } from '../types/Ytd';
+import { YtdHistory } from '../types/YtdHistory';
 
-const getMaxDate = (ytdHistory: IYtdHistory): number => ytdHistory
+const getMaxDate = (ytdHistory: YtdHistory): number => ytdHistory
   .athletes
   .map((athlete) => athlete.ytd.map((ytd) => ytd.date))
   .flat(1)
   .reduce((acc, curr) => ((curr > acc) ? curr : acc), 0);
 interface GetAthleteYtdProps {
-  ytds: IYtd[],
+  ytds: Ytd[],
   maxDate: number
 }
 
@@ -30,7 +30,7 @@ const getAthleteYtd = ({ ytds, maxDate }: GetAthleteYtdProps) => {
 
 export const addFinalDateToYtdHistory = ({
   ytdHistory,
-}: { ytdHistory: IYtdHistory }): IYtdHistory => {
+}: { ytdHistory: YtdHistory }): YtdHistory => {
   const maxDate = getMaxDate(ytdHistory);
 
   return {

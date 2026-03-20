@@ -1,8 +1,8 @@
-import { IAthleteYtd } from '../types/IAthleteYtd';
-import { IYtd } from '../types/IYtd';
-import { IYtdHistory } from '../types/IYtdHistory';
+import { AthleteYtd } from '../types/AthleteYtd';
+import { Ytd } from '../types/Ytd';
+import { YtdHistory } from '../types/YtdHistory';
 
-const getNewAthleteYtdHistory = (athleteYtds: IYtd[], currentYtd: IAthleteYtd) => {
+const getNewAthleteYtdHistory = (athleteYtds: Ytd[], currentYtd: AthleteYtd) => {
   const latestYtdDate = Math.max(...athleteYtds.map((ytd) => ytd.date));
 
   if (latestYtdDate >= currentYtd.lastUpdated) {
@@ -19,21 +19,21 @@ const getNewAthleteYtdHistory = (athleteYtds: IYtd[], currentYtd: IAthleteYtd) =
 };
 
 interface GenerateRealTimeYtdProps {
-  ytd: IYtdHistory
-  currentYtds: IAthleteYtd[]
+  ytd: YtdHistory
+  currentYtds: AthleteYtd[]
   now: number;
 }
 
 export const generateRealTimeYtd = ({
   ytd, currentYtds, now,
-}: GenerateRealTimeYtdProps): IYtdHistory => {
+}: GenerateRealTimeYtdProps): YtdHistory => {
   const updatedMeta = {
     ...ytd.meta,
     lastUpdated: now,
     minorVersion: (ytd.meta.minorVersion ?? 0) + 1,
   };
 
-  const realTimeYtd: IYtdHistory = {
+  const realTimeYtd: YtdHistory = {
     meta: updatedMeta,
     athletes: ytd.athletes.map((athlete) => {
       const athleteCurrentYtd = currentYtds.find((a) => a.athleteId === athlete.athleteId);

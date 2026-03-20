@@ -1,4 +1,4 @@
-export interface IYtd {
+export interface Ytd {
   date: number;
   count: number;
   distance: number;

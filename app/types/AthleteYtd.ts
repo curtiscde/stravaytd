@@ -1,4 +1,4 @@
-export interface IAthleteYtd {
+export interface AthleteYtd {
   athleteId: number;
   count: number;
   distance: number;

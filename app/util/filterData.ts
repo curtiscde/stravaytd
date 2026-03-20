@@ -1,4 +1,4 @@
-interface IYtd {
+interface Ytd {
   date: number;
   count: number;
   distance: number;
@@ -6,18 +6,18 @@ interface IYtd {
   movingTime: number;
 }
 
-export interface IAthlete {
+export interface Athlete {
   athleteId: number,
-  ytd: Array<IYtd>;
+  ytd: Array<Ytd>;
 }
 
 interface FilterDataArgs {
-  athletes: Array<IAthlete>
-  propertyName: IFilterPropertyName
+  athletes: Array<Athlete>
+  propertyName: FilterPropertyName
   year: number
 }
 
-type IFilterPropertyName = 'count' | 'distance' | 'elevationGain' | 'movingTime';
+type FilterPropertyName = 'count' | 'distance' | 'elevationGain' | 'movingTime';
 
 export function filterData({ athletes, propertyName, year }: FilterDataArgs) {
   return athletes.map((athlete) => ({

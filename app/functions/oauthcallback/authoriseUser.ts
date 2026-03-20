@@ -5,7 +5,7 @@ import { upsertUser } from './upsertUser';
 
 require('dotenv').config();
 
-interface IAuthoriseUser {
+interface AuthoriseUser {
   authorised: boolean;
   authData?: {
     accessToken: string;
@@ -13,7 +13,7 @@ interface IAuthoriseUser {
   }
 }
 
-export const authoriseUser = async (code: string): Promise<IAuthoriseUser> => {
+export const authoriseUser = async (code: string): Promise<AuthoriseUser> => {
   const authData = await getAuthData(code);
   if (!isAthleteAllowed(process.env.ALLOWED_ATHLETES!, authData.athlete.id)) {
     return { authorised: false };

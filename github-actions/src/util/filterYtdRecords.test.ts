@@ -1,9 +1,9 @@
-import { IYtd } from '../types/IYtd';
+import { Ytd } from '../types/Ytd';
 import { filterYtdRecords } from './filterYtdRecords';
 
 const convertToTimestamp = (date: string) => new Date(date).getTime();
 
-const ytdA: IYtd = {
+const ytdA: Ytd = {
   count: 1,
   distance: 1,
   elevationGain: 1,
@@ -11,7 +11,7 @@ const ytdA: IYtd = {
   date: convertToTimestamp('2023-01-01'),
 };
 
-const ytdB: IYtd = {
+const ytdB: Ytd = {
   count: 2,
   distance: 2,
   elevationGain: 2,

@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 
-interface IGetWebhook {
+interface GetWebhook {
   statusCode: number;
   body?: string;
 }
 
-export const getWebhook = (event: any): IGetWebhook => {
+export const getWebhook = (event: any): GetWebhook => {
   const mode = event.queryStringParameters['hub.mode'];
   const token = event.queryStringParameters['hub.verify_token'];
   const challenge = event.queryStringParameters['hub.challenge'];
