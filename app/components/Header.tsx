@@ -77,7 +77,7 @@ export default function Header({ years, currentYear }: HeaderProps) {
 
           <button
             type="button"
-            className="flex items-center gap-1 py-2 w-full text-left"
+            className="flex items-center gap-1 py-2 w-full text-left font-medium text-base"
             onClick={() => setYearsOpen((o) => !o)}
           >
             <span>📅 Years</span>
