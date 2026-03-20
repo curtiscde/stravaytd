@@ -16,11 +16,12 @@ interface HomeProps {
   movingTimeData: any;
   elevationGainData: any;
   year: number;
+  years: number[];
 }
 
 // eslint-disable-next-line react/function-component-definition
 const Home: NextPage<HomeProps> = ({
-  distanceData, runsData, movingTimeData, elevationGainData, year,
+  distanceData, runsData, movingTimeData, elevationGainData, year, years,
 }: HomeProps) => {
   const sections: Section[] = [
     {
@@ -64,7 +65,7 @@ const Home: NextPage<HomeProps> = ({
         <meta name="description" content={`Strava Year-To-Date Stats ${year}`} />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏃‍♂️</text></svg>" />
       </Head>
-      <Header />
+      <Header years={years} currentYear={year} />
       <Sections sections={sections} />
       <Footer />
     </>
@@ -99,7 +100,7 @@ interface GetStaticProps {
 export async function getStaticProps({ params: { year } }: GetStaticProps) {
   const allowedAthletes = process.env.ALLOWED_ATHLETES || '';
   const {
-    distanceData, runsData, movingTimeData, elevationGainData,
+    distanceData, runsData, movingTimeData, elevationGainData, years,
   } = getStats({ allowedAthletes, year: Number(year) });
   return {
     props: {
@@ -107,7 +108,8 @@ export async function getStaticProps({ params: { year } }: GetStaticProps) {
       runsData,
       movingTimeData,
       elevationGainData,
-      year,
+      year: Number(year),
+      years,
     },
   };
 }

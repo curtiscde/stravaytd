@@ -46,6 +46,27 @@ exports[`Home renders index page 1`] = `
         >
           🏔 Elevation
         </a>
+        <div
+          class="relative inline-block group p-1"
+        >
+          <span
+            class="cursor-pointer select-none"
+          >
+            📅 Years
+          </span>
+          <div
+            class="absolute right-0 z-10 hidden group-hover:block bg-white border border-gray-200 rounded shadow-lg py-1 mt-1"
+          >
+            <a
+              class="block px-4 py-1 hover:bg-gray-100 whitespace-nowrap font-bold"
+              href="/"
+              rel="noopener noreferrer"
+            >
+              2025
+               ✓
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </header>

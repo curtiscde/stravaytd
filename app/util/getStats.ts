@@ -4,6 +4,7 @@ import { addFinalDateToYtdHistory } from './addFinalDateToYtdHistory';
 import { filterData } from './filterData';
 import { generateRealTimeYtd } from './generateRealTimeYtd';
 import { getAthletesCurrentYtd } from './getAthletesCurrentYtd';
+import { getYears } from './getYears';
 import { mapAthleteName } from './mapAthleteName';
 
 const convertMtoKm = (metres: number) => Math.round((metres / 1000) * 100) / 100;
@@ -39,6 +40,7 @@ interface GetStats {
 export function getStats({ allowedAthletes, year }: GetStats) {
   const ytdHistoryFile = fs.readFileSync('../app/data/ytdHistory.json', 'utf-8');
   const ytd = JSON.parse(ytdHistoryFile) as YtdHistory;
+  const years = getYears({ athletes: ytd.athletes });
   const currentYtds = getAthletesCurrentYtd('./data/current-ytd');
   const now = new Date().getTime();
   let realTimeYtd = generateRealTimeYtd({ ytd, currentYtds, now });
@@ -107,5 +109,6 @@ export function getStats({ allowedAthletes, year }: GetStats) {
     runsData,
     movingTimeData,
     elevationGainData,
+    years,
   };
 }
