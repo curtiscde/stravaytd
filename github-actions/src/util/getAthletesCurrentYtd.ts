@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 
-export const getAthletesCurrentYtd = (currentYtdPath: string): IAthleteYtd[] => {
+export const getAthletesCurrentYtd = (currentYtdPath: string): AthleteYtd[] => {
   const files = fs.readdirSync(path.join(currentYtdPath));
   const athletesYtd = [];
   files.forEach((file) => {

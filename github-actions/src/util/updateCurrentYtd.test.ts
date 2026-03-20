@@ -3,7 +3,7 @@ import * as core from '@actions/core';
 import { updateCurrentYtd } from './updateCurrentYtd';
 import { commitAthleteYtd } from './commitAthleteYtd';
 import { getAthleteCurrentYtd } from './getAthleteCurrentYtd';
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 
 jest.mock('fs', () => ({ existsSync: () => true }));
 jest.mock('fs/promises', () => ({ writeFile: jest.fn() }));
@@ -26,7 +26,7 @@ describe('updateCurrentYtd', () => {
   const movingTime = 13;
   const elevationGain = 14;
 
-  const newYtd: IAthleteYtd = {
+  const newYtd: AthleteYtd = {
     athleteId, count, distance, movingTime, elevationGain, lastUpdated: mockDate.getTime(),
   };
 

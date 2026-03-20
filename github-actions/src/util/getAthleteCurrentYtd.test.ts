@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { IAthleteYtd } from '../types/IAthleteYtd';
+import { AthleteYtd } from '../types/AthleteYtd';
 import { getAthleteCurrentYtd } from './getAthleteCurrentYtd';
 
 jest.mock('fs');
@@ -7,7 +7,7 @@ jest.mock('fs');
 describe('getAthleteCurrentYtd', () => {
   const mockReadFileSync = fs.readFileSync as jest.MockedFunction<typeof fs.readFileSync>;
 
-  const mockAthleteYtd: IAthleteYtd = {
+  const mockAthleteYtd: AthleteYtd = {
     athleteId: 12345,
     distance: 4000,
     elevationGain: 500,

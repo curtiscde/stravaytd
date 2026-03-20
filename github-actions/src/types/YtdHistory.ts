@@ -1,15 +1,15 @@
-import { IYtd } from './IYtd';
+import { Ytd } from './Ytd';
 
-interface IAthlete {
+interface Athlete {
   athleteId: number,
-  ytd: Array<IYtd>;
+  ytd: Array<Ytd>;
 }
 
-export interface IYtdHistory {
+export interface YtdHistory {
   meta: {
     version: number;
     minorVersion?: number;
     lastUpdated: number;
   },
-  athletes: Array<IAthlete>;
+  athletes: Array<Athlete>;
 }

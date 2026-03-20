@@ -1,5 +1,5 @@
-import { IAthleteYtd } from '../types/IAthleteYtd';
-import { IYtdHistory } from '../types/IYtdHistory';
+import { AthleteYtd } from '../types/AthleteYtd';
+import { YtdHistory } from '../types/YtdHistory';
 import { generateRealTimeYtd } from './generateRealTimeYtd';
 
 const convertToTimestamp = (date: string) => new Date(date).getTime();
@@ -40,11 +40,11 @@ const currentAthleteYtdB = {
 
 describe('generateRealTimeYtd', () => {
   it('add current ytd', () => {
-    const ytd: IYtdHistory = {
+    const ytd: YtdHistory = {
       meta,
       athletes: [currentAthleteYtdA],
     };
-    const currentYtds: IAthleteYtd[] = [{
+    const currentYtds: AthleteYtd[] = [{
       athleteId: currentAthleteYtdA.athleteId,
       distance: 5000,
       movingTime: 566,
@@ -70,11 +70,11 @@ describe('generateRealTimeYtd', () => {
   });
 
   it('current ytd already exists', () => {
-    const ytd: IYtdHistory = {
+    const ytd: YtdHistory = {
       meta,
       athletes: [currentAthleteYtdA],
     };
-    const currentYtds: IAthleteYtd[] = [{
+    const currentYtds: AthleteYtd[] = [{
       athleteId: currentAthleteYtdA.athleteId,
       distance: currentAthleteYtdA.ytd[0].distance,
       elevationGain: currentAthleteYtdA.ytd[0].elevationGain,
@@ -96,11 +96,11 @@ describe('generateRealTimeYtd', () => {
   });
 
   it('multiple athletes', () => {
-    const ytd: IYtdHistory = {
+    const ytd: YtdHistory = {
       meta,
       athletes: [currentAthleteYtdA, currentAthleteYtdB],
     };
-    const currentYtds: IAthleteYtd[] = [
+    const currentYtds: AthleteYtd[] = [
       {
         athleteId: currentAthleteYtdA.athleteId,
         distance: currentAthleteYtdA.ytd[0].distance + 1,
@@ -150,11 +150,11 @@ describe('generateRealTimeYtd', () => {
   });
 
   it('multiple athletes - only 1 has updates', () => {
-    const ytd: IYtdHistory = {
+    const ytd: YtdHistory = {
       meta,
       athletes: [currentAthleteYtdA, currentAthleteYtdB],
     };
-    const currentYtds: IAthleteYtd[] = [
+    const currentYtds: AthleteYtd[] = [
       {
         athleteId: currentAthleteYtdA.athleteId,
         distance: currentAthleteYtdA.ytd[0].distance + 1,
@@ -198,11 +198,11 @@ describe('generateRealTimeYtd', () => {
   });
 
   it('multiple athletes - no updates', () => {
-    const ytd: IYtdHistory = {
+    const ytd: YtdHistory = {
       meta,
       athletes: [currentAthleteYtdA, currentAthleteYtdB],
     };
-    const currentYtds: IAthleteYtd[] = [
+    const currentYtds: AthleteYtd[] = [
       {
         athleteId: currentAthleteYtdA.athleteId,
         distance: currentAthleteYtdA.ytd[0].distance,

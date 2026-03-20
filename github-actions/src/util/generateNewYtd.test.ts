@@ -1,4 +1,4 @@
-import { IYtdHistory } from '../types/IYtdHistory';
+import { YtdHistory } from '../types/YtdHistory';
 import { generateNewYtd } from './generateNewYtd';
 
 describe('generateNewYtd', () => {
@@ -43,7 +43,7 @@ describe('generateNewYtd', () => {
   });
 
   it('existing ytd, updated athlete ytd', () => {
-    const ytd: IYtdHistory = {
+    const ytd: YtdHistory = {
       meta: { version: 1, lastUpdated: 12345 },
       athletes: [
         {
@@ -80,7 +80,7 @@ describe('generateNewYtd', () => {
       },
     ];
 
-    const expectedYtd: IYtdHistory = {
+    const expectedYtd: YtdHistory = {
       meta: { version: 2, lastUpdated: 20000 },
       athletes: [
         {

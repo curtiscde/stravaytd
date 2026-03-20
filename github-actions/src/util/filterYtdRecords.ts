@@ -1,6 +1,6 @@
-import { IYtd } from '../types/IYtd';
+import { Ytd } from '../types/Ytd';
 
-const isDiff = (x: IYtd, y: IYtd) => {
+const isDiff = (x: Ytd, y: Ytd) => {
   if (x.count !== y.count) return true;
   if (x.distance !== y.distance) return true;
   if (x.elevationGain !== y.elevationGain) return true;
@@ -8,7 +8,7 @@ const isDiff = (x: IYtd, y: IYtd) => {
   return false;
 };
 
-export const filterYtdRecords = ({ ytds }: { ytds: IYtd[] }) => ytds
+export const filterYtdRecords = ({ ytds }: { ytds: Ytd[] }) => ytds
   .filter((d, i) => {
     const previousD = ytds[i - 1];
     const nextD = ytds[i + 1];

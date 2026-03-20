@@ -1,7 +1,7 @@
 import * as fs from 'fs';
-import { IYtdHistory } from '../types/IYtdHistory';
+import { YtdHistory } from '../types/YtdHistory';
 
-const defaultYtd: IYtdHistory = {
+const defaultYtd: YtdHistory = {
   athletes: [],
   meta: {
     version: 0,
@@ -9,7 +9,7 @@ const defaultYtd: IYtdHistory = {
   },
 };
 
-export const getYtdHistory = (ytdFileLocation: string): IYtdHistory => {
+export const getYtdHistory = (ytdFileLocation: string): YtdHistory => {
   const file = fs.readFileSync(ytdFileLocation, 'utf8');
   try {
     const ytd = JSON.parse(file);
