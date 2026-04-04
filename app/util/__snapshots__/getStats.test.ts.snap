@@ -1,33 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getStats year 2022 returns stats 1`] = `
-Object {
-  "distanceData": Object {
-    "datasets": Array [
-      Object {
+{
+  "distanceData": {
+    "datasets": [
+      {
         "backgroundColor": "rgba(255, 99, 132, 0.2)",
         "borderColor": "rgba(255, 99, 132, 1)",
-        "data": Array [
-          Object {
+        "data": [
+          {
             "x": 1640995200000,
             "y": 10,
           },
-          Object {
+          {
             "x": 1646092800000,
             "y": 12,
           },
         ],
         "label": "foo",
       },
-      Object {
+      {
         "backgroundColor": "rgba(54, 162, 235, 0.2)",
         "borderColor": "rgba(54, 162, 235, 1)",
-        "data": Array [
-          Object {
+        "data": [
+          {
             "x": 1640995200000,
             "y": 20,
           },
-          Object {
+          {
             "x": 1646092800000,
             "y": 80,
           },
@@ -36,32 +36,32 @@ Object {
       },
     ],
   },
-  "elevationGainData": Object {
-    "datasets": Array [
-      Object {
+  "elevationGainData": {
+    "datasets": [
+      {
         "backgroundColor": "rgba(255, 99, 132, 0.2)",
         "borderColor": "rgba(255, 99, 132, 1)",
-        "data": Array [
-          Object {
+        "data": [
+          {
             "x": 1640995200000,
             "y": 3,
           },
-          Object {
+          {
             "x": 1646092800000,
             "y": 7,
           },
         ],
         "label": "foo",
       },
-      Object {
+      {
         "backgroundColor": "rgba(54, 162, 235, 0.2)",
         "borderColor": "rgba(54, 162, 235, 1)",
-        "data": Array [
-          Object {
+        "data": [
+          {
             "x": 1640995200000,
             "y": 4,
           },
-          Object {
+          {
             "x": 1646092800000,
             "y": 10,
           },
@@ -70,32 +70,32 @@ Object {
       },
     ],
   },
-  "movingTimeData": Object {
-    "datasets": Array [
-      Object {
+  "movingTimeData": {
+    "datasets": [
+      {
         "backgroundColor": "rgba(255, 99, 132, 0.2)",
         "borderColor": "rgba(255, 99, 132, 1)",
-        "data": Array [
-          Object {
+        "data": [
+          {
             "x": 1640995200000,
             "y": 5,
           },
-          Object {
+          {
             "x": 1646092800000,
             "y": 10,
           },
         ],
         "label": "foo",
       },
-      Object {
+      {
         "backgroundColor": "rgba(54, 162, 235, 0.2)",
         "borderColor": "rgba(54, 162, 235, 1)",
-        "data": Array [
-          Object {
+        "data": [
+          {
             "x": 1640995200000,
             "y": 5,
           },
-          Object {
+          {
             "x": 1646092800000,
             "y": 15,
           },
@@ -104,32 +104,32 @@ Object {
       },
     ],
   },
-  "runsData": Object {
-    "datasets": Array [
-      Object {
+  "runsData": {
+    "datasets": [
+      {
         "backgroundColor": "rgba(255, 99, 132, 0.2)",
         "borderColor": "rgba(255, 99, 132, 1)",
-        "data": Array [
-          Object {
+        "data": [
+          {
             "x": 1640995200000,
             "y": 4,
           },
-          Object {
+          {
             "x": 1646092800000,
             "y": 8,
           },
         ],
         "label": "foo",
       },
-      Object {
+      {
         "backgroundColor": "rgba(54, 162, 235, 0.2)",
         "borderColor": "rgba(54, 162, 235, 1)",
-        "data": Array [
-          Object {
+        "data": [
+          {
             "x": 1640995200000,
             "y": 5,
           },
-          Object {
+          {
             "x": 1646092800000,
             "y": 11,
           },
@@ -138,7 +138,7 @@ Object {
       },
     ],
   },
-  "years": Array [
+  "years": [
     2021,
     2022,
   ],

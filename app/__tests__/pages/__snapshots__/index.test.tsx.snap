@@ -11,7 +11,6 @@ exports[`Home renders index page 1`] = `
       <a
         class="block h-6 text-2xl font-semibold"
         href="/"
-        rel="noopener noreferrer"
       >
         Strava Year-To-Date Stats
       </a>
@@ -20,29 +19,25 @@ exports[`Home renders index page 1`] = `
       >
         <a
           class="p-1"
-          href="/#distance"
-          rel="noopener noreferrer"
+          href="#distance"
         >
           🏃‍♂️ Distance
         </a>
         <a
           class="p-1"
-          href="/#runs"
-          rel="noopener noreferrer"
+          href="#runs"
         >
           💯 Runs
         </a>
         <a
           class="p-1"
-          href="/#time"
-          rel="noopener noreferrer"
+          href="#time"
         >
           ⏱ Time
         </a>
         <a
           class="p-1"
-          href="/#elevation"
-          rel="noopener noreferrer"
+          href="#elevation"
         >
           🏔 Elevation
         </a>
@@ -60,7 +55,6 @@ exports[`Home renders index page 1`] = `
             <a
               class="block px-4 py-1 hover:bg-gray-100 whitespace-nowrap font-bold"
               href="/"
-              rel="noopener noreferrer"
             >
               2025
                ✓
@@ -202,32 +196,28 @@ exports[`Home renders index page 1`] = `
           class="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6"
         >
           <a
-            href="/#distance"
-            rel="noopener noreferrer"
+            href="#distance"
           >
             <span>
               🏃‍♂️ Distance
             </span>
           </a>
           <a
-            href="/#runs"
-            rel="noopener noreferrer"
+            href="#runs"
           >
             <span>
               💯 Runs
             </span>
           </a>
           <a
-            href="/#time"
-            rel="noopener noreferrer"
+            href="#time"
           >
             <span>
               ⏱ Time
             </span>
           </a>
           <a
-            href="/#elevation"
-            rel="noopener noreferrer"
+            href="#elevation"
           >
             <span>
               🏔 Elevation
