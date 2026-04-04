@@ -1,4 +1,3 @@
-/* eslint-disable  jsx-a11y/anchor-has-content */
 import fs from 'fs';
 import React from 'react';
 import type { NextPage } from 'next';

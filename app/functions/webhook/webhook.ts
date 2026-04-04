@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Handler } from '@netlify/functions';
 import { handleWebhook } from './handleWebhook';
 
