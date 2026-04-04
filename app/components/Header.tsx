@@ -20,28 +20,25 @@ export default function Header({ years, currentYear }: HeaderProps) {
   return (
     <header className="container w-full max-w-3xl px-6 mx-auto xl:max-w-5xl">
       <div className="flex items-center justify-between py-10">
-        <Link href="/">
-          <a rel="noopener noreferrer" className="block h-6 text-2xl font-semibold">Strava Year-To-Date Stats</a>
-        </Link>
+        <Link href="/" className="block h-6 text-2xl font-semibold">Strava Year-To-Date Stats</Link>
 
         {/* Desktop nav */}
         <div className="hidden space-x-2 font-medium sm:flex sm:items-center">
-          <Link href="#distance"><a rel="noopener noreferrer" className="p-1">🏃‍♂️ Distance</a></Link>
-          <Link href="#runs"><a rel="noopener noreferrer" className="p-1">💯 Runs</a></Link>
-          <Link href="#time"><a rel="noopener noreferrer" className="p-1">⏱ Time</a></Link>
-          <Link href="#elevation"><a rel="noopener noreferrer" className="p-1">🏔 Elevation</a></Link>
+          <Link href="#distance" className="p-1">🏃‍♂️ Distance</Link>
+          <Link href="#runs" className="p-1">💯 Runs</Link>
+          <Link href="#time" className="p-1">⏱ Time</Link>
+          <Link href="#elevation" className="p-1">🏔 Elevation</Link>
           <div className="relative inline-block group p-1">
             <span className="cursor-pointer select-none">📅 Years</span>
             <div className="absolute right-0 z-10 hidden group-hover:block bg-white border border-gray-200 rounded shadow-lg py-1 mt-1">
               {reversedYears.map((year) => (
-                <Link key={year} href={year === currentYear ? '/' : `/year/${year}`}>
-                  <a
-                    rel="noopener noreferrer"
-                    className={`block px-4 py-1 hover:bg-gray-100 whitespace-nowrap${year === currentYear ? ' font-bold' : ''}`}
-                  >
-                    {year}
-                    {year === currentYear && ' ✓'}
-                  </a>
+                <Link
+                  key={year}
+                  href={year === currentYear ? '/' : `/year/${year}`}
+                  className={`block px-4 py-1 hover:bg-gray-100 whitespace-nowrap${year === currentYear ? ' font-bold' : ''}`}
+                >
+                  {year}
+                  {year === currentYear && ' ✓'}
                 </Link>
               ))}
             </div>
@@ -62,18 +59,10 @@ export default function Header({ years, currentYear }: HeaderProps) {
       {/* Mobile menu */}
       {menuOpen && (
         <nav className="pb-6 font-medium sm:hidden">
-          <Link href="#distance">
-            <a href="#distance" rel="noopener noreferrer" className="block py-2" onClick={closeMenu}>🏃‍♂️ Distance</a>
-          </Link>
-          <Link href="#runs">
-            <a href="#runs" rel="noopener noreferrer" className="block py-2" onClick={closeMenu}>💯 Runs</a>
-          </Link>
-          <Link href="#time">
-            <a href="#time" rel="noopener noreferrer" className="block py-2" onClick={closeMenu}>⏱ Time</a>
-          </Link>
-          <Link href="#elevation">
-            <a href="#elevation" rel="noopener noreferrer" className="block py-2" onClick={closeMenu}>🏔 Elevation</a>
-          </Link>
+          <Link href="#distance" className="block py-2" onClick={closeMenu}>🏃‍♂️ Distance</Link>
+          <Link href="#runs" className="block py-2" onClick={closeMenu}>💯 Runs</Link>
+          <Link href="#time" className="block py-2" onClick={closeMenu}>⏱ Time</Link>
+          <Link href="#elevation" className="block py-2" onClick={closeMenu}>🏔 Elevation</Link>
 
           <button
             type="button"
@@ -87,16 +76,14 @@ export default function Header({ years, currentYear }: HeaderProps) {
           {yearsOpen && (
             <div className="pl-4">
               {reversedYears.map((year) => (
-                <Link key={year} href={year === currentYear ? '/' : `/year/${year}`}>
-                  <a
-                    href={year === currentYear ? '/' : `/year/${year}`}
-                    rel="noopener noreferrer"
-                    className={`block py-2${year === currentYear ? ' font-bold' : ''}`}
-                    onClick={closeMenu}
-                  >
-                    {year}
-                    {year === currentYear && ' ✓'}
-                  </a>
+                <Link
+                  key={year}
+                  href={year === currentYear ? '/' : `/year/${year}`}
+                  className={`block py-2${year === currentYear ? ' font-bold' : ''}`}
+                  onClick={closeMenu}
+                >
+                  {year}
+                  {year === currentYear && ' ✓'}
                 </Link>
               ))}
             </div>
