@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^1.6.0",
+    "@actions/core": "^1.11.1",
     "simple-git": "^3.5.0"
   },
   "devDependencies": {
