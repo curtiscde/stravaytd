@@ -2,7 +2,7 @@ import * as octokitCore from '@octokit/core';
 import { AthleteYtd } from '../types/AthleteYtd';
 import { dispatchAction } from './dispatchAction';
 
-jest.mock('@octokit/core');
+jest.mock('@octokit/core', () => ({ Octokit: jest.fn() }), { virtual: true });
 
 const athleteYtd: AthleteYtd = {
   athleteId: 1,

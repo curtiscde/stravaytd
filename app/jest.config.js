@@ -12,5 +12,7 @@ module.exports = {
     "!.eslintrc.json",
     "!next-env.d.ts"
   ],
-  testEnvironment: "jest-environment-jsdom"
+  testEnvironment: "jest-environment-jsdom",
+  transformIgnorePatterns: [
+    "/node_modules/(?!(@octokit|universal-user-agent|before-after-hook)/)"]
 }
