@@ -10,7 +10,7 @@ const mockNewYtd = {
 };
 
 jest.mock('fs/promises');
-jest.mock('@actions/core', () => ({ setOutput: jest.fn() }));
+jest.mock('@actions/core', () => ({ setOutput: jest.fn() }), { virtual: true });
 jest.mock('./getYtdHistory', () => ({
   getYtdHistory: () => ({
     meta: { lastUpdated: 1, version: 5 },

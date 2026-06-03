@@ -5,5 +5,7 @@
     "!**/build/**",
     "!**/coverage/**",
     "!**/*.config.js"
-  ]
+  ],
+  "transformIgnorePatterns": [
+    "/node_modules/(?!(@actions)/)"]
 }

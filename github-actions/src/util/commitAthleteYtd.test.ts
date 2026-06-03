@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import { commitAthleteYtd } from './commitAthleteYtd';
 
-jest.mock('@actions/core');
+jest.mock('@actions/core', () => ({ info: jest.fn() }), { virtual: true });
 
 jest.mock('simple-git', () => ({
   __esModule: true,
