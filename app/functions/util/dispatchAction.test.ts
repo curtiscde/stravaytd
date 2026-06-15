@@ -2,7 +2,9 @@ import * as octokitCore from '@octokit/core';
 import { AthleteYtd } from '../types/AthleteYtd';
 import { dispatchAction } from './dispatchAction';
 
-jest.mock('@octokit/core');
+// @octokit/core v5+ is ESM-only, which babel-jest does not transform from
+// node_modules. A factory mock avoids loading the real module entirely.
+jest.mock('@octokit/core', () => ({ Octokit: jest.fn() }));
 
 const athleteYtd: AthleteYtd = {
   athleteId: 1,
