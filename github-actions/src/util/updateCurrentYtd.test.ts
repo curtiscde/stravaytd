@@ -7,7 +7,7 @@ import { AthleteYtd } from '../types/AthleteYtd';
 
 jest.mock('fs', () => ({ existsSync: () => true }));
 jest.mock('fs/promises', () => ({ writeFile: jest.fn() }));
-jest.mock('@actions/core', () => ({ info: jest.fn() }));
+jest.mock('@actions/core', () => ({ info: jest.fn() }), { virtual: true });
 jest.mock('./commitAthleteYtd', () => ({
   commitAthleteYtd: jest.fn(),
 }));
