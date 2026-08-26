@@ -32,7 +32,7 @@ describe('handleOauthcallback', () => {
     let response: any;
 
     beforeAll(async () => {
-      authoriseUser.mockReturnValue({ authorised: true, authData: { accessToken: 'foo', athleteId: 123 } });
+      (authoriseUser as jest.Mock).mockReturnValue({ authorised: true, authData: { accessToken: 'foo', athleteId: 123 } });
       response = await handleOauthcallback(event);
     });
 
@@ -59,7 +59,7 @@ describe('handleOauthcallback', () => {
     let response: any;
 
     beforeAll(async () => {
-      authoriseUser.mockReturnValue({ authorised: false });
+      (authoriseUser as jest.Mock).mockReturnValue({ authorised: false });
       response = await handleOauthcallback(event);
     });
 

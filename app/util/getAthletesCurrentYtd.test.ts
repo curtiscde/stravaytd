@@ -10,7 +10,7 @@ const mockFiles = {
 
 jest.mock('fs', () => ({
   readdirSync: () => ['athlete123.json', 'athlete456.json'],
-  readFileSync: (file) => JSON.stringify(mockFiles[file]),
+  readFileSync: (file: string) => JSON.stringify(mockFiles[file as keyof typeof mockFiles]),
 }));
 
 jest.mock('path', () => ({
@@ -18,7 +18,7 @@ jest.mock('path', () => ({
 }));
 
 describe('getAthletesCurrentYtd', () => {
-  let athletesYtd;
+  let athletesYtd: ReturnType<typeof getAthletesCurrentYtd>;
 
   beforeAll(() => {
     athletesYtd = getAthletesCurrentYtd('foo');
