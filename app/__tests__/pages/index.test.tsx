@@ -24,7 +24,7 @@ jest.mock('../../components/YtdChart', () => () => <div>ytdchart</div>);
 
 // Freeze time for tests so Year is stable (mock to 2025)
 beforeAll(() => {
-  jest.useFakeTimers('modern');
+  jest.useFakeTimers();
   jest.setSystemTime(new Date('2025-06-01T00:00:00Z'));
 });
 
