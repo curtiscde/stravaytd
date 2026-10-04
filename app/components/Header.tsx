@@ -30,7 +30,7 @@ export default function Header({ years, currentYear }: HeaderProps) {
           <Link href="#elevation" className="p-1">🏔 Elevation</Link>
           <div className="relative inline-block group p-1">
             <span className="cursor-pointer select-none">📅 Years</span>
-            <div className="absolute right-0 z-10 hidden group-hover:block bg-white border border-gray-200 rounded shadow-lg py-1 mt-1">
+            <div className="absolute right-0 z-10 hidden group-hover:block bg-white border border-gray-200 rounded-sm shadow-lg py-1 mt-1">
               {reversedYears.map((year) => (
                 <Link
                   key={year}
