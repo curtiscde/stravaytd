@@ -5,7 +5,7 @@ jest.mock('@actions/core', () => ({ info: jest.fn() }), { virtual: true });
 
 jest.mock('simple-git', () => ({
   __esModule: true,
-  default: jest.fn(() => ({
+  simpleGit: jest.fn(() => ({
     clean: jest.fn(() => ({
       pull: jest.fn(),
       addConfig: jest.fn(),

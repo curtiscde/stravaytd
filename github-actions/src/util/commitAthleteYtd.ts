@@ -1,4 +1,4 @@
-import simpleGit, { SimpleGit, CleanOptions } from 'simple-git';
+import { simpleGit, SimpleGit, CleanOptions } from 'simple-git';
 import * as core from '@actions/core';
 import { AthleteYtd } from '../types/AthleteYtd';
 
