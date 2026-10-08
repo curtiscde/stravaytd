@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@actions/core": "^2.0.3",
-    "simple-git": "^3.5.0"
+    "simple-git": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
