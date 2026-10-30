@@ -59,8 +59,8 @@ npx jest --testNamePattern "test name"
 
 ### Data Flow
 
-1. **Strava webhook** → Netlify function (`app/functions/webhook/webhook.ts`) receives activity events → calls GitHub API to dispatch a `repository_dispatch` event
-2. **GitHub Action** (`update-current-ytd.yml`) triggers on dispatch → runs `github-actions/src/updateCurrentYtd.ts` → calls Strava API for latest stats → commits updated JSON to `data/current-ytd/`
+1. **Strava webhook** → Netlify function (`app/functions/webhook/webhook.ts`) receives activity events → calls the GitHub API (`app/functions/util/dispatchAction.ts`) to trigger a `workflow_dispatch` of `update-current-ytd.yml`, passing the athlete's YTD stats as workflow inputs
+2. **GitHub Action** (`update-current-ytd.yml`) runs on `workflow_dispatch` → runs `github-actions/src/updateCurrentYtd.ts` → calls Strava API for latest stats → commits updated JSON to `data/current-ytd/`
 3. **Scheduled GitHub Action** (`update-ytd-history.yml`, weekly) → runs `github-actions/src/updateYtdHistory.ts` → appends a new Ytd entry per athlete to `data/ytdHistory.json`
 4. **Next.js `getStaticProps`** reads both data files at build time → renders static HTML with Chart.js visualizations
 
@@ -106,7 +106,7 @@ Strava refresh tokens are AES-encrypted before storage in Firestore. `CIPHERKEY`
 | `STRAVA_CLIENTID` | app, actions | Strava OAuth client ID |
 | `STRAVA_CLIENTSECRET` | app, actions | Strava OAuth client secret |
 | `STRAVA_VERIFY_TOKEN` | app (webhook) | Token for Strava webhook verification |
-| `GITHUB_PAT` | app (webhook) | PAT for dispatching GitHub Actions |
+| `GITHUB_PAT` | app (webhook) | PAT for triggering `workflow_dispatch` (fine-grained: Actions read & write on this repo; classic: `repo` scope). Set in Netlify env vars; redeploy after rotating |
 | `GITHUB_REPO` | app (webhook) | Repository path (e.g. `user/repo`) |
 | `GITHUB_REF` | app (webhook) | Default branch (e.g. `main`) |
 
